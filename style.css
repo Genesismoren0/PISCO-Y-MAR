@@ -1,0 +1,1920 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap");
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+:root {
+  --navy: #031b21;
+  --navy-light: #073039;
+  --teal: #138f8d;
+  --teal-dark: #087775;
+  --teal-light: #7fcfca;
+  --gold: #dda941;
+  --gold-dark: #bd8428;
+  --orange: #e9692c;
+  --cream: #f4eee2;
+  --cream-light: #fffaf1;
+  --white: #ffffff;
+  --text: #11292f;
+  --muted: #68777a;
+  --line: rgba(17, 41, 47, 0.12);
+  --shadow: 0 16px 36px rgba(3, 27, 33, 0.12);
+  --max-width: 1420px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--cream);
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+main {
+  overflow: hidden;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1000;
+  width: min(calc(100% - 80px), var(--max-width));
+  height: 92px;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) 210px;
+  align-items: center;
+  gap: 28px;
+}
+
+.logo {
+  width: 195px;
+  height: 82px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 195px;
+  height: 118px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(25px, 3vw, 48px);
+}
+
+.nav a {
+  position: relative;
+  padding: 35px 0 28px;
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  width: 0;
+  height: 2px;
+  border-radius: 10px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  transition: width 0.2s ease;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--gold);
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+  width: 31px;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.pedido-btn {
+  min-height: 46px;
+  padding: 11px 17px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #e6bc5a, #c98e2c);
+  color: #10252a;
+  box-shadow: 0 10px 24px rgba(221, 169, 65, 0.28);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pedido-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(221, 169, 65, 0.35);
+}
+
+.pedido-btn img {
+  display: none;
+}
+
+/* El archivo pedido_online.png es una imagen grande,
+   por eso utilizamos un ícono creado con CSS */
+.pedido-btn::after {
+  content: "🛵";
+  font-size: 17px;
+  line-height: 1;
+}
+
+.menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.menu-btn span {
+  display: block;
+  width: 21px;
+  height: 2px;
+  margin: 4px auto;
+  border-radius: 5px;
+  background: var(--white);
+}
+
+/* =========================================================
+   PORTADA
+========================================================= */
+.hero {
+  position: relative;
+  min-height: 735px;
+  padding-top: 92px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(1, 15, 19, 0.98) 0%,
+      rgba(1, 15, 19, 0.95) 30%,
+      rgba(1, 15, 19, 0.57) 55%,
+      rgba(1, 15, 19, 0.07) 82%
+    ),
+    url("imagenportada.png") center 45% / cover no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.22));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 80px), var(--max-width));
+  margin: 0 auto;
+  padding-right: 54%;
+  color: var(--white);
+}
+
+.hero-kicker {
+  margin-bottom: 13px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4.6px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(78px, 8vw, 126px);
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: -4px;
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  display: block;
+  margin-top: 16px;
+  color: var(--teal-light);
+}
+
+.hero-wave {
+  width: 62px;
+  height: 13px;
+  margin: 26px 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-wave::before,
+.hero-wave::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 12px;
+  border-top: 3px solid var(--teal-light);
+  border-radius: 50%;
+}
+
+.hero-wave::before {
+  left: 0;
+  top: 4px;
+  transform: rotate(7deg);
+}
+
+.hero-wave::after {
+  left: 25px;
+  top: 0;
+  transform: rotate(-7deg);
+}
+
+.hero-description {
+  max-width: 490px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  margin-top: 31px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn-primary,
+.btn-secondary {
+  min-width: 185px;
+  min-height: 53px;
+  padding: 14px 25px;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #e6ba56, #ca902f);
+  color: #10252a;
+  box-shadow: 0 12px 26px rgba(221, 169, 65, 0.25);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(221, 169, 65, 0.9);
+  background: rgba(2, 22, 27, 0.38);
+  color: var(--white);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary:hover {
+  background: rgba(221, 169, 65, 0.12);
+}
+
+.btn-secondary img {
+  display: none;
+}
+
+.btn-secondary::after {
+  content: "🛵";
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* =========================================================
+   BENEFICIOS
+========================================================= */
+.benefits {
+  position: relative;
+  min-height: 130px;
+  padding: 24px max(40px, calc((100% - var(--max-width)) / 2));
+  background:
+    linear-gradient(90deg, #117d7b, #159493 52%, #117d7b);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.benefits::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  background-image:
+    repeating-radial-gradient(
+      ellipse at center,
+      transparent 0 14px,
+      rgba(255, 255, 255, 0.5) 15px 16px
+    );
+  background-size: 145px 55px;
+}
+
+.benefit-item {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  padding: 0 27px;
+  border-right: 1px solid rgba(255, 255, 255, 0.27);
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.benefit-item:first-child {
+  padding-left: 0;
+}
+
+.benefit-item:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.benefit-image {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+}
+
+.benefit-image img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.benefit-item h3 {
+  margin-bottom: 5px;
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.benefit-item p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   PROMOCIONES
+========================================================= */
+.promos {
+  width: min(calc(100% - 105px), 1320px);
+  margin: 0 auto;
+  padding: 43px 0 20px;
+  display: grid;
+  grid-template-columns: 1.62fr 0.74fr 0.78fr;
+  gap: 20px;
+}
+
+.promo-card {
+  position: relative;
+  min-height: 306px;
+  border: 1px solid rgba(17, 41, 47, 0.08);
+  border-radius: 17px;
+  overflow: hidden;
+  background: var(--cream-light);
+  box-shadow: 0 10px 25px rgba(3, 27, 33, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.promo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* Promo ceviches */
+.promo-ceviche {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 250, 241, 1) 0%,
+      rgba(255, 250, 241, 0.95) 35%,
+      rgba(255, 250, 241, 0.22) 70%
+    ),
+    url("imagenportada.png") 68% center / cover no-repeat;
+}
+
+.promo-ceviche-content {
+  width: 53%;
+  min-height: 306px;
+  padding: 35px 10px 28px 34px;
+  position: relative;
+  z-index: 2;
+}
+
+.promo-label {
+  color: var(--teal-dark);
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.promo-ceviche h2 {
+  color: var(--teal-dark);
+  font-family: "Playfair Display", serif;
+  font-size: 31px;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.promo-ceviche h2 span {
+  display: block;
+  margin-top: 7px;
+  color: var(--orange);
+  font-size: 51px;
+  line-height: 0.9;
+}
+
+.promo-description {
+  max-width: 190px;
+  margin: 18px 0;
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.promo-link {
+  width: max-content;
+  min-height: 37px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  background: var(--teal-dark);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* Promo delivery */
+.promo-delivery {
+  color: var(--white);
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(20, 143, 141, 0.28),
+      transparent 30%
+    ),
+    linear-gradient(155deg, #073139, #031b21);
+}
+
+.promo-delivery::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 100px;
+  opacity: 0.1;
+  background-image:
+    repeating-radial-gradient(
+      ellipse at center,
+      transparent 0 14px,
+      rgba(255, 255, 255, 0.5) 15px 16px
+    );
+  background-size: 120px 45px;
+}
+
+.promo-delivery-content {
+  position: relative;
+  z-index: 2;
+  min-height: 306px;
+  padding: 35px 26px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.promo-delivery h2,
+.promo-locales h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 37px;
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.promo-delivery h2 span,
+.promo-locales h2 span {
+  display: block;
+}
+
+.promo-delivery p,
+.promo-locales p {
+  margin-top: 20px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.delivery-decoration {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.delivery-decoration > span {
+  color: var(--teal-light);
+  font-size: 43px;
+  line-height: 1;
+}
+
+.delivery-decoration img {
+  display: none;
+}
+
+.delivery-decoration::after {
+  content: "🛵";
+  color: var(--gold);
+  font-size: 60px;
+  line-height: 1;
+}
+
+.delivery-link {
+  margin-top: 15px;
+  background: #1f9f9d;
+}
+
+/* Promo locales */
+.promo-locales {
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(233, 105, 44, 0.11),
+      transparent 30%
+    ),
+    var(--cream-light);
+}
+
+.promo-locales-content {
+  min-height: 306px;
+  padding: 35px 26px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.promo-locales h2 {
+  color: var(--teal-dark);
+}
+
+.promo-location-image {
+  width: 78px;
+  height: 78px;
+  margin: auto auto 12px;
+  object-fit: contain;
+}
+
+.locations-link {
+  color: var(--orange);
+  border: 1px solid rgba(233, 105, 44, 0.7);
+  background: transparent;
+}
+
+/* =========================================================
+   PLATOS DESTACADOS
+========================================================= */
+.destacados {
+  width: min(calc(100% - 76px), 1390px);
+  margin: 0 auto;
+  padding: 10px 0 32px;
+}
+
+.section-title {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.section-title h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.section-title-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(17, 41, 47, 0.4);
+}
+
+.section-title-wave {
+  color: var(--orange);
+  font-size: 28px;
+}
+
+.destacados-row {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.destacados-track {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.dish-card {
+  overflow: hidden;
+  border: 1px solid rgba(17, 41, 47, 0.09);
+  border-radius: 11px;
+  background: var(--cream-light);
+  box-shadow: 0 7px 17px rgba(3, 27, 33, 0.07);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dish-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.dish-card > img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.dish-card:hover > img {
+  transform: scale(1.04);
+}
+
+.dish-card > div {
+  padding: 12px 13px 14px;
+}
+
+.dish-card h3 {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dish-card p {
+  margin-top: 5px;
+  color: var(--text);
+  font-size: 10px;
+}
+
+.slider-arrow {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px rgba(19, 143, 141, 0.24);
+  font-size: 26px;
+  line-height: 1;
+}
+
+/* =========================================================
+   EXPERIENCIA
+========================================================= */
+.experiencia {
+  position: relative;
+  min-height: 290px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 20, 25, 0.95),
+      rgba(2, 20, 25, 0.78) 39%,
+      rgba(2, 20, 25, 0.12) 76%
+    ),
+    url("imagenbannerabajo.png") center / cover no-repeat;
+}
+
+.experiencia-content {
+  width: min(calc(100% - 80px), var(--max-width));
+  margin: 0 auto;
+  padding-right: 57%;
+}
+
+.experiencia-kicker {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+}
+
+.experiencia h2 {
+  margin: 2px 0 8px;
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.experiencia-description {
+  max-width: 480px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.experiencia-content > a {
+  width: max-content;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: var(--teal);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+.instagram-section {
+  min-height: 120px;
+  padding: 17px max(40px, calc((100% - var(--max-width)) / 2));
+  background: var(--navy);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.instagram-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.instagram-box > img {
+  width: 46px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.instagram-box p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.instagram-box a {
+  display: block;
+  margin-top: 3px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.instagram-gallery {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(80px, 1fr));
+  gap: 8px;
+}
+
+.instagram-gallery a {
+  height: 84px;
+  overflow: hidden;
+  border: 2px solid rgba(221, 169, 65, 0.65);
+  border-radius: 7px;
+}
+
+.instagram-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.instagram-gallery a:hover img {
+  transform: scale(1.06);
+}
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+.floating-whatsapp {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1200;
+  width: 62px;
+  height: 62px;
+  border: 4px solid var(--white);
+  border-radius: 50%;
+  background: #25d366;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+  transition: transform 0.2s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.06);
+}
+
+.floating-whatsapp img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 1100px) {
+  .header {
+    width: calc(100% - 48px);
+    grid-template-columns: 190px minmax(0, 1fr) 180px;
+  }
+
+  .logo,
+  .logo img {
+    width: 165px;
+  }
+
+  .nav {
+    gap: 20px;
+  }
+
+  .hero-content {
+    width: calc(100% - 48px);
+    padding-right: 46%;
+  }
+
+  .benefits {
+    padding-inline: 24px;
+  }
+
+  .benefit-item {
+    padding-inline: 16px;
+    grid-template-columns: 50px minmax(0, 1fr);
+  }
+
+  .benefit-image,
+  .benefit-image img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .promos {
+    width: calc(100% - 56px);
+  }
+
+  .destacados {
+    width: calc(100% - 48px);
+  }
+
+  .destacados-track {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .dish-card:nth-child(5) {
+    display: none;
+  }
+
+  .experiencia-content {
+    width: calc(100% - 48px);
+    padding-right: 50%;
+  }
+
+  .instagram-section {
+    padding-inline: 24px;
+  }
+
+}
+
+/* =========================================================
+   TABLET PEQUEÑA Y MENÚ MÓVIL
+========================================================= */
+@media (max-width: 860px) {
+  .header {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 76px;
+    padding: 0 15px;
+    transform: none;
+    grid-template-columns: minmax(0, 1fr) auto;
+    background: rgba(3, 27, 33, 0.97);
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.16);
+  }
+
+  .logo {
+    width: 155px;
+    height: 68px;
+  }
+
+  .logo img {
+    width: 155px;
+    height: 100px;
+  }
+
+  .nav {
+    position: absolute;
+    top: 76px;
+    left: 14px;
+    right: 14px;
+    display: none;
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--navy);
+    box-shadow: var(--shadow);
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    width: 100%;
+    padding: 13px;
+    border-radius: 7px;
+    text-align: center;
+  }
+
+  .nav a::after {
+    display: none;
+  }
+
+  .nav a:hover,
+  .nav a.active {
+    background: rgba(19, 143, 141, 0.16);
+  }
+
+  .header-actions {
+    grid-column: 2;
+  }
+
+  .pedido-btn {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .hero {
+    min-height: 680px;
+    padding-top: 76px;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(1, 15, 19, 0.97),
+        rgba(1, 15, 19, 0.74),
+        rgba(1, 15, 19, 0.28)
+      ),
+      url("imagenportada.png") 60% center / cover no-repeat;
+  }
+
+  .hero-content {
+    width: calc(100% - 44px);
+    padding-right: 28%;
+  }
+
+  .hero h1 {
+    font-size: clamp(68px, 13vw, 100px);
+  }
+
+  .benefits {
+    padding: 0 22px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .benefit-item {
+    min-height: 100px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .benefit-item:nth-child(3),
+  .benefit-item:nth-child(4) {
+    border-bottom: none;
+  }
+
+  .promos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .promo-ceviche {
+    grid-column: 1 / -1;
+  }
+
+  .destacados-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dish-card:nth-child(4) {
+    display: none;
+  }
+
+  .experiencia-content {
+    padding-right: 35%;
+  }
+
+  .instagram-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .instagram-gallery {
+    grid-template-columns: repeat(6, 135px);
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+}
+
+/* =========================================================
+   CELULAR
+========================================================= */
+@media (max-width: 600px) {
+  .hero {
+    min-height: 650px;
+    padding-bottom: 45px;
+    align-items: flex-end;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(1, 15, 19, 0.32),
+        rgba(1, 15, 19, 0.9) 48%,
+        rgba(1, 15, 19, 0.98)
+      ),
+      url("imagenportada.png") 62% 30% / cover no-repeat;
+  }
+
+  .hero-content {
+    width: calc(100% - 30px);
+    padding-right: 0;
+  }
+
+  .hero-kicker {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .hero h1 {
+    font-size: clamp(60px, 20vw, 86px);
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .benefits {
+    padding: 0 15px;
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-item {
+    min-height: auto;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .benefit-item:nth-child(3) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .promos {
+    width: calc(100% - 26px);
+    padding-top: 26px;
+    grid-template-columns: 1fr;
+  }
+
+  .promo-ceviche {
+    min-height: 390px;
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255, 250, 241, 0.98),
+        rgba(255, 250, 241, 0.75),
+        rgba(255, 250, 241, 0.15)
+      ),
+      url("imagenportada.png") 65% center / cover no-repeat;
+  }
+
+  .promo-ceviche-content {
+    width: 72%;
+    min-height: 390px;
+    padding: 28px;
+  }
+
+  .promo-delivery,
+  .promo-locales {
+    min-height: 290px;
+  }
+
+  .promo-delivery-content,
+  .promo-locales-content {
+    min-height: 290px;
+  }
+
+  .destacados {
+    width: calc(100% - 22px);
+  }
+
+  .section-title-line {
+    display: none;
+  }
+
+  .section-title h2 {
+    font-size: 22px;
+  }
+
+  .destacados-row {
+    gap: 6px;
+  }
+
+  .destacados-track {
+    grid-template-columns: 1fr;
+  }
+
+  .dish-card:nth-child(n + 2) {
+    display: none;
+  }
+
+  .dish-card > img {
+    height: 225px;
+  }
+
+  .slider-arrow {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .experiencia {
+    min-height: 330px;
+    align-items: flex-end;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(2, 20, 25, 0.2),
+        rgba(2, 20, 25, 0.92)
+      ),
+      url("imagenbannerabajo.png") 62% center / cover no-repeat;
+  }
+
+  .experiencia-content {
+    width: calc(100% - 30px);
+    padding: 0 0 34px;
+  }
+
+  .instagram-section {
+    padding: 20px 15px;
+  }
+
+  .instagram-gallery {
+    grid-template-columns: repeat(6, 120px);
+  }
+
+  .floating-whatsapp {
+    right: 15px;
+    bottom: 15px;
+    width: 57px;
+    height: 57px;
+  }
+
+}
+
+/* =========================================================
+   HEADER AL HACER SCROLL
+========================================================= */
+.header-scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: none;
+  z-index: 1000;
+  height: 76px;
+  padding: 0 max(40px, calc((100% - var(--max-width)) / 2));
+  background: rgba(3, 27, 33, 0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition:
+    height .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    padding .25s ease;
+}
+
+.header-scrolled .logo{
+  height:68px;
+}
+
+.header-scrolled .logo img{
+  height:95px;
+}
+
+.header-scrolled .nav a{
+  padding-top:28px;
+  padding-bottom:24px;
+}
+
+/* =========================================================
+   ANIMACIONES AL APARECER
+========================================================= */
+.hidden{
+  opacity:0;
+  transform:translateY(28px);
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce){
+  .hidden,
+  .show{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+
+}
+
+/* =========================================================
+   AJUSTE RESPONSIVE
+========================================================= */
+@media (max-width:860px){
+  .header-scrolled{
+    height:76px;
+    padding:0 15px;
+  }
+
+}
+
+/* =========================================================
+   AJUSTES FINALES — compatibles con index.html corregido
+========================================================= */
+/* Imágenes correctas en botones */
+.pedido-btn img,
+.btn-secondary img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* Hero: plato visible y onda turquesa real */
+.hero {
+  background-image:
+    linear-gradient(90deg, #03191f 0%, rgba(3, 25, 31, 0.96) 30%, rgba(3, 25, 31, 0.72) 48%, rgba(3, 25, 31, 0.10) 74%),
+    url("imagenportada.png");
+  background-repeat: no-repeat;
+  background-position: center, right center;
+  background-size: 100% 100%, auto 100%;
+}
+
+.hero-wave {
+  width: 88px;
+  height: 20px;
+  background: url("lineaonduladaturquesa.png") center / contain no-repeat;
+}
+
+/* Botón Conoce más: usar imagen en lugar del carácter ondulado */
+.btn-primary img {
+  width: 31px;
+  height: 13px;
+  object-fit: contain;
+}
+
+/* Barra de beneficios */
+.benefits {
+  background: #168f8b;
+}
+
+/* Tarjeta delivery */
+.promo-delivery,
+.promo-delivery-content {
+  position: relative;
+}
+
+.delivery-decoration {
+  position: absolute;
+  right: 14px;
+  bottom: 22px;
+  width: 132px;
+  height: 96px;
+}
+
+.delivery-decoration img,
+.delivery-scooter-image {
+  width: 132px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.delivery-wave-image {
+  position: absolute;
+  left: -52px;
+  bottom: 8px;
+  width: 46px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* Título de destacados con imágenes reales */
+.section-title-line {
+  display: block;
+  width: 52px;
+  height: 16px;
+  background: url("lineasonduladasdoblenegra.png") center / contain no-repeat;
+}
+
+.section-title-wave {
+  display: block;
+  width: 58px;
+  height: 18px;
+  font-size: 0;
+  color: transparent;
+  background: url("lineaonduladabicolor.png") center / contain no-repeat;
+}
+
+/* Tarjeta de locales */
+.promo-location-image {
+  width: 104px;
+  height: 80px;
+  object-fit: contain;
+}
+
+/* Botón Reserva tu mesa */
+.experiencia-content > a {
+  min-height: 32px;
+  padding: 8px 14px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+@media (max-width: 620px) {
+  .hero {
+    background-image:
+      linear-gradient(180deg, rgba(3, 25, 31, 0.05) 0%, rgba(3, 25, 31, 0.60) 48%, #03191f 82%),
+      url("imagenportada.png");
+    background-position: center, center 52px;
+    background-size: 100% 100%, auto 64%;
+  }
+
+}
+
+/* =========================================================
+   AJUSTES VISUALES SOLICITADOS — 20/07/2026
+   Estos estilos solo corrigen hero, beneficios, delivery y ondas.
+========================================================= */
+/* HERO: plato más pequeño y desplazado hacia la derecha como el mockup */
+.hero {
+  background-image:
+    linear-gradient(
+      90deg,
+      #03191f 0%,
+      rgba(3, 25, 31, 0.98) 27%,
+      rgba(3, 25, 31, 0.88) 40%,
+      rgba(3, 25, 31, 0.38) 58%,
+      rgba(3, 25, 31, 0.05) 78%
+    ),
+    url("imagenportada.png");
+  background-repeat: no-repeat;
+  background-position: center, right 48% center;
+  background-size: 100% 100%, auto 86%;
+  background-color: #03191f;
+}
+
+/* Dejar el contenido con el ancho visual del mockup */
+.hero-content {
+  padding-right: 58%;
+}
+
+/* Onda turquesa bajo DE MAR */
+.hero-wave {
+  width: 82px;
+  height: 22px;
+  margin-top: 20px;
+  background: url("lineaonduladaturquesa.png") center / 100% 100% no-repeat;
+}
+
+/* BENEFICIOS: fondo y cajas compatibles con los colores reales de cada PNG */
+.benefits {
+  background:
+    linear-gradient(rgba(18, 149, 146, 0.94), rgba(18, 149, 146, 0.94)),
+    repeating-radial-gradient(circle at 8% 30%, transparent 0 24px, rgba(255,255,255,.08) 25px 26px, transparent 27px 48px);
+}
+
+.benefit-item {
+  grid-template-columns: 78px 1fr;
+  gap: 20px;
+}
+
+.benefit-image {
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  border-radius: 0;
+  background: #0a5d65;
+}
+
+.benefit-image img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  transform: scale(1.16);
+  transform-origin: center;
+}
+
+/* Cada imagen conserva su tono original y queda integrada con el fondo */
+.benefit-item:nth-child(1) .benefit-image { background: #0a5d65; }
+.benefit-item:nth-child(2) .benefit-image { background: #156167; }
+.benefit-item:nth-child(3) .benefit-image { background: #115e62; }
+.benefit-item:nth-child(4) .benefit-image { background: #115e62; }
+.benefit-item h3 {
+  font-size: 14px;
+}
+
+.benefit-item p {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+/* DELIVERY: una sola imagen, la indicada por la usuaria */
+.promo-delivery {
+  position: relative;
+  background: #031f27;
+}
+
+.delivery-decoration {
+  right: 4px;
+  bottom: 30px;
+  width: 175px;
+  height: 125px;
+  overflow: visible;
+}
+
+.delivery-scooter-image {
+  display: block;
+  width: 175px;
+  height: 125px;
+  max-width: none;
+  object-fit: contain;
+  transform: scale(1.16);
+  transform-origin: center;
+}
+
+/* Onda turquesa en la tarjeta Delivery */
+.delivery-wave-image {
+  position: absolute;
+  left: -43px;
+  bottom: 5px;
+  width: 58px;
+  height: 20px;
+  object-fit: contain;
+  z-index: 2;
+}
+
+/* Ondas del título Platos destacados */
+.section-title-line {
+  display: block;
+  width: 62px;
+  height: 21px;
+  background: url("lineasonduladasdoblenegra.png") center / contain no-repeat;
+}
+
+.section-title-wave {
+  display: block;
+  width: 62px;
+  height: 21px;
+  font-size: 0;
+  color: transparent;
+  background: url("lineaonduladabicolor.png") center / contain no-repeat;
+}
+
+/* Locales: imagen de ubicación sin quedar diminuta */
+.promo-location-image {
+  width: 118px;
+  height: 92px;
+  object-fit: contain;
+}
+
+@media (max-width: 1000px) {
+  .hero {
+    background-position: center, 78% center;
+    background-size: 100% 100%, auto 88%;
+  }
+
+  .hero-content {
+    padding-right: 48%;
+  }
+
+  .benefit-item {
+    grid-template-columns: 66px 1fr;
+    gap: 14px;
+  }
+
+  .benefit-image {
+    width: 62px;
+    height: 62px;
+  }
+
+}
+
+@media (max-width: 620px) {
+  .hero {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(3, 25, 31, 0.05) 0%,
+        rgba(3, 25, 31, 0.58) 46%,
+        #03191f 82%
+      ),
+      url("imagenportada.png");
+    background-position: center, center 58px;
+    background-size: 100% 100%, auto 58%;
+  }
+
+  .hero-content {
+    padding-right: 0;
+  }
+
+  .benefit-item {
+    grid-template-columns: 72px 1fr;
+  }
+
+  .benefit-image {
+    width: 68px;
+    height: 68px;
+  }
+
+}
+
+/* =========================================================
+   CORRECCIONES FINALES: COLORES, MOTOS, ONDAS Y PORTADA
+========================================================= */
+/* Portada: imagen pegada al borde derecho, sin espacio vacío */
+.hero {
+  background-image:
+    linear-gradient(
+      90deg,
+      #03191f 0%,
+      rgba(3, 25, 31, 0.98) 26%,
+      rgba(3, 25, 31, 0.82) 39%,
+      rgba(3, 25, 31, 0.30) 57%,
+      rgba(3, 25, 31, 0.02) 76%
+    ),
+    url("imagenportada.png");
+  background-position: center, right center;
+  background-size: 100% 100%, auto 100%;
+  background-repeat: no-repeat;
+  background-color: #03191f;
+}
+
+.hero-content {
+  padding-right: 59%;
+}
+
+/* Onda turquesa del hero: visible y proporcionada */
+.hero-wave {
+  width: 96px;
+  height: 24px;
+  background: url("lineaonduladaturquesa.png") center / contain no-repeat;
+}
+
+/* Beneficios: mismo verde petróleo de los fondos de los PNG */
+.benefits {
+  background-color: #0c5f63;
+  background-image:
+    repeating-radial-gradient(
+      circle at 7% 35%,
+      transparent 0 25px,
+      rgba(255, 255, 255, 0.055) 26px 27px,
+      transparent 28px 50px
+    );
+}
+
+.benefit-image,
+.benefit-item:nth-child(1) .benefit-image,
+.benefit-item:nth-child(2) .benefit-image,
+.benefit-item:nth-child(3) .benefit-image,
+.benefit-item:nth-child(4) .benefit-image {
+  width: 76px;
+  height: 76px;
+  background: #0c5f63;
+}
+
+.benefit-image img {
+  width: 76px;
+  height: 76px;
+  object-fit: cover;
+  transform: none;
+}
+
+/* La tercera imagen corresponde a img_deliveryrapido.png */
+.benefit-item:nth-child(3) .benefit-image img {
+  content: url("img_deliveryrapido.png");
+}
+
+/* Botones de pedidos: usar el scooter amarillo correcto */
+.pedido-btn img,
+.btn-secondary img {
+  content: url("pedidos_online.png");
+  width: 30px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* Tarjeta Delivery: una sola moto amarilla y una onda turquesa grande */
+.promo-delivery {
+  background: #031f27;
+}
+
+.delivery-decoration {
+  right: 10px;
+  bottom: 27px;
+  width: 164px;
+  height: 126px;
+}
+
+.delivery-scooter-image {
+  content: url("pedidos_online.png");
+  width: 154px;
+  height: 108px;
+  object-fit: contain;
+  transform: none;
+  filter: none;
+}
+
+.delivery-wave-image {
+  content: url("lineaonduladaturquesa.png");
+  left: -50px;
+  bottom: 8px;
+  width: 76px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* Ondas de Platos destacados: no pequeñas */
+.section-title-line {
+  width: 84px;
+  height: 28px;
+  background: url("lineasonduladasdoblenegra.png") center / contain no-repeat;
+}
+
+.section-title-wave {
+  width: 84px;
+  height: 28px;
+  background: url("lineaonduladabicolor.png") center / contain no-repeat;
+}
+
+/* Onda blanca en Vive la experiencia */
+.experiencia-wave {
+  width: 92px;
+  height: 24px;
+  margin: 7px 0 8px;
+  object-fit: contain;
+}
+
+@media (max-width: 1000px) {
+  .hero {
+    background-position: center, right center;
+    background-size: 100% 100%, auto 100%;
+  }
+
+  .hero-content {
+    padding-right: 48%;
+  }
+
+}
+
+@media (max-width: 620px) {
+  .hero {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(3, 25, 31, 0.04) 0%,
+        rgba(3, 25, 31, 0.56) 47%,
+        #03191f 82%
+      ),
+      url("imagenportada.png");
+    background-position: center, center 58px;
+    background-size: 100% 100%, auto 60%;
+  }
+
+  .hero-content {
+    padding-right: 0;
+  }
+
+  .section-title-line,
+  .section-title-wave {
+    width: 62px;
+    height: 22px;
+  }
+
+}
+
+/* =========================================================
+   ÚLTIMOS AJUSTES SOLICITADOS
+   - Botón superior: deliveryoretiro.png
+   - Conoce más: lineasonduladasdoblenegra.png
+   - Tarjeta Delivery: pedidos_online.png
+   - WhatsApp: iconowhattsap.png más grande
+========================================================= */
+/* Botón superior Pedidos online: mostrar la imagen real */
+.pedido-btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+.pedido-btn img {
+  display: block !important;
+  width: 38px !important;
+  height: 30px !important;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+/* Botón Conoce más: onda doble negra más visible */
+.btn-primary img {
+  display: block !important;
+  width: 45px !important;
+  height: 20px !important;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+/* Tarjeta Delivery o Retiro: usar la moto amarilla real */
+.delivery-decoration::after {
+  content: none !important;
+  display: none !important;
+}
+
+.delivery-decoration img {
+  display: block !important;
+}
+
+.delivery-scooter-image {
+  content: url("pedidos_online.png");
+  width: 172px !important;
+  height: 132px !important;
+  object-fit: contain;
+  filter: none !important;
+  transform: none !important;
+}
+
+.delivery-decoration {
+  right: 8px;
+  bottom: 20px;
+  width: 182px;
+  height: 140px;
+}
+
+/* WhatsApp flotante: usar el PNG real y hacerlo más visible */
+.floating-whatsapp {
+  width: 76px;
+  height: 76px;
+  padding: 4px;
+}
+
+.floating-whatsapp img {
+  display: block !important;
+  width: 62px !important;
+  height: 62px !important;
+  max-width: none;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .pedido-btn img {
+    width: 34px !important;
+    height: 28px !important;
+  }
+
+  .btn-primary img {
+    width: 40px !important;
+    height: 18px !important;
+  }
+
+  .floating-whatsapp {
+    width: 68px;
+    height: 68px;
+  }
+
+  .floating-whatsapp img {
+    width: 55px !important;
+    height: 55px !important;
+  }
+
+}

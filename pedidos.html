@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Realiza tu pedido online en Pisco & Mar. Ceviches, entradas, fondos, arroces, carnes, postres y bebidas."
+  >
+
+  <title>Pedidos Online | Pisco & Mar</title>
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Estilos de la página de pedidos -->
+  <link rel="stylesheet" href="pedidos.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       ENCABEZADO
+  ====================================================== -->
+
+  <header class="orders-header">
+
+    <div class="orders-header-inner">
+
+      <a
+        href="index.html"
+        class="orders-logo"
+        aria-label="Volver al inicio de Pisco & Mar"
+      >
+        <img
+          src="logo2.png"
+          alt="Pisco & Mar Restaurante"
+        >
+      </a>
+
+
+      <nav
+        class="orders-nav"
+        id="ordersNav"
+        aria-label="Navegación principal"
+      >
+        <a href="index.html">
+          Inicio
+        </a>
+
+        <a href="index.html#nosotros">
+          Nosotros
+        </a>
+
+        <a href="index.html#promos">
+          Promos
+        </a>
+
+        <a href="index.html#locales">
+          Locales
+        </a>
+
+        <a href="index.html#contacto">
+          Contacto
+        </a>
+      </nav>
+
+
+      <div class="orders-actions">
+
+        <button
+          type="button"
+          class="cart-top"
+          id="cartJump"
+          aria-label="Ir al carrito"
+        >
+          <span class="cart-top-icon" aria-hidden="true">
+            🛍
+          </span>
+
+          <span>
+            Carrito
+          </span>
+
+          <strong id="cartCount">
+            0
+          </strong>
+        </button>
+
+
+        <button
+          type="button"
+          class="orders-menu-button"
+          id="ordersMenuButton"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="ordersNav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =====================================================
+         PORTADA DE PEDIDOS
+    ====================================================== -->
+
+    <section class="orders-hero">
+
+      <div class="orders-hero-pattern"></div>
+
+      <div class="orders-hero-content">
+
+        <div
+          class="orders-hero-waves"
+          aria-hidden="true"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <h1>
+          Pedidos online
+        </h1>
+
+        <p>
+          Elige tus favoritos y disfruta Pisco & Mar donde estés
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+    ====================================================== -->
+
+    <section class="orders-main">
+
+      <!-- ===================================================
+           CATEGORÍAS
+      ==================================================== -->
+
+      <section
+        class="category-panel"
+        aria-label="Categorías del menú"
+      >
+
+        <div class="category-bar">
+
+          <button
+            type="button"
+            class="category active"
+            data-filter="todos"
+          >
+            <span class="category-icon">
+              <img
+                src="todos.png"
+                alt=""
+              >
+            </span>
+
+            <span class="category-name">
+              Todos
+            </span>
+          </button>
+
+
+          <button
+            type="button"
+            class="category"
+            data-filter="ceviches"
+          >
+            <span class="category-icon">
+              <img
+                src="ceviches.png"
+                alt=""
+              >
+            </span>
+
+            <span class="category-name">
+              Ceviches
+            </span>
+          </button>
+
+
+          <button
+            type="button"
+            class="category"
+            data-filter="entradas"
+          >
+            <span class="category-icon">
+              <img
+                src="entradas.png"
+                alt=""
+              >
+            </span>
+
+            <span class="category-name">
+              Entradas
+            </span>
+          </button>
+
+
+          <button
+            type="button"
+            class="category"
+            data-filter="fondos"
+          >
+            <span class="category-icon">
+              <img
+                src="fondos.png"
+                alt=""
+              >
+            </span>
+
+            <span class="category-name">
+              Fondos
+            </span>
+          </button>
+
+
+          <button
+            type="button"
+            class="category"
+            data-filter="arroces"
+          >
+            <span class="category-icon">
+              <img
+                src="arroces.png"
+                alt=""
+              >
+            </span>
+
+            <span class="category-name">
+              Arroces
+            </span>
+          </button>
+
+
+          <button
+            type="button"
+            class="category"
+            data-filter="carnes"
+          >
+            <span class="category-icon">
+              <img
+                src="carnes.png"
+                alt=""
+              >
+            </span>
+
+            <span class="category-name">
+              Carnes
+            </span>
+          </button>
+
+
+          <button
+            type="button"
+            class="category"
+            data-filter="postres"
+          >
+            <span class="category-icon">
+              <img
+                src="postres.png"
+                alt=""
+              >
+            </span>
+
+            <span class="category-name">
+              Postres
+            </span>
+          </button>
+
+
+          <button
+            type="button"
+            class="category"
+            data-filter="bebidas"
+          >
+            <span class="category-icon">
+              <img
+                src="bebidas.png"
+                alt=""
+              >
+            </span>
+
+            <span class="category-name">
+              Bebidas
+            </span>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- ===================================================
+           CATÁLOGO Y CARRITO
+      ==================================================== -->
+
+      <div class="orders-layout">
+
+        <!-- =================================================
+             CATÁLOGO
+        ================================================== -->
+
+        <section class="products-area">
+
+          <div class="catalog-heading">
+
+            <div>
+              <p class="catalog-kicker">
+                Nuestra carta
+              </p>
+
+              <h2>
+                Elige tus favoritos
+              </h2>
+            </div>
+
+
+            <div class="search-row">
+
+              <label
+                class="search-box"
+                for="searchInput"
+              >
+                <span aria-hidden="true">
+                  ⌕
+                </span>
+
+                <input
+                  type="search"
+                  id="searchInput"
+                  placeholder="Buscar productos..."
+                  autocomplete="off"
+                >
+              </label>
+
+
+              <select
+                id="sortSelect"
+                aria-label="Ordenar productos"
+              >
+                <option value="default">
+                  Más vendidos
+                </option>
+
+                <option value="low">
+                  Menor precio
+                </option>
+
+                <option value="high">
+                  Mayor precio
+                </option>
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <!-- Los productos se cargan desde pedidos.js -->
+
+          <div
+            class="products-grid"
+            id="productsGrid"
+          ></div>
+
+
+          <!-- ===============================================
+               COMBOS
+          ================================================ -->
+
+          <section class="combos-section">
+
+            <div class="mini-title">
+
+              <span></span>
+
+              <h2>
+                Combos para compartir
+              </h2>
+
+              <span></span>
+
+            </div>
+
+
+            <div class="combos-grid">
+
+              <article class="combo-card">
+
+                <div class="combo-image">
+                  <img
+                    src="imagen9.png"
+                    alt="Combo Marino"
+                  >
+
+                  <button
+                    type="button"
+                    class="combo-add"
+                    data-combo-id="101"
+                    aria-label="Agregar Combo Marino"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <div class="combo-information">
+                  <h3>
+                    Combo Marino
+                  </h3>
+
+                  <p>
+                    Ceviche, jalea mixta y dos bebidas
+                  </p>
+
+                  <strong>
+                    $24.990
+                  </strong>
+                </div>
+
+              </article>
+
+
+              <article class="combo-card">
+
+                <div class="combo-image">
+                  <img
+                    src="imagen8.png"
+                    alt="Combo Familiar"
+                  >
+
+                  <button
+                    type="button"
+                    class="combo-add"
+                    data-combo-id="102"
+                    aria-label="Agregar Combo Familiar"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <div class="combo-information">
+                  <h3>
+                    Combo Familiar
+                  </h3>
+
+                  <p>
+                    Dos fondos, dos entradas y dos bebidas
+                  </p>
+
+                  <strong>
+                    $34.990
+                  </strong>
+                </div>
+
+              </article>
+
+
+              <article class="combo-card">
+
+                <div class="combo-image">
+                  <img
+                    src="imagen10.png"
+                    alt="Combo Pareja"
+                  >
+
+                  <button
+                    type="button"
+                    class="combo-add"
+                    data-combo-id="103"
+                    aria-label="Agregar Combo Pareja"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <div class="combo-information">
+                  <h3>
+                    Combo Pareja
+                  </h3>
+
+                  <p>
+                    Fondo, entrada y dos pisco sour
+                  </p>
+
+                  <strong>
+                    $22.990
+                  </strong>
+                </div>
+
+              </article>
+
+            </div>
+
+          </section>
+
+        </section>
+
+
+        <!-- =================================================
+             CARRITO LATERAL
+        ================================================== -->
+
+        <aside
+          class="cart-panel"
+          id="cartPanel"
+        >
+
+          <!-- RESUMEN DEL PEDIDO -->
+
+          <section class="cart-box">
+
+            <div class="cart-heading">
+
+              <div>
+                <p>
+                  Resumen
+                </p>
+
+                <h2>
+                  Tu pedido
+                </h2>
+              </div>
+
+              <span
+                class="cart-heading-icon"
+                aria-hidden="true"
+              >
+                🛍
+              </span>
+
+            </div>
+
+
+            <div
+              id="cartItems"
+              class="cart-items"
+            >
+              <div class="empty-cart">
+
+                <span aria-hidden="true">
+                  🛒
+                </span>
+
+                <h3>
+                  Tu carrito está vacío
+                </h3>
+
+                <p>
+                  Agrega tus platos favoritos para comenzar.
+                </p>
+
+              </div>
+            </div>
+
+
+            <div class="summary">
+
+              <div class="summary-line">
+                <span>
+                  Subtotal
+                </span>
+
+                <strong id="subtotal">
+                  $0
+                </strong>
+              </div>
+
+
+              <div class="summary-line">
+                <span>
+                  Delivery
+                </span>
+
+                <strong id="delivery">
+                  $0
+                </strong>
+              </div>
+
+
+              <div class="summary-line total">
+                <span>
+                  Total
+                </span>
+
+                <strong id="total">
+                  $0
+                </strong>
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- INFORMACIÓN DEL CLIENTE -->
+
+          <section class="form-box">
+
+            <div class="form-heading">
+              <p>
+                Completa tus datos
+              </p>
+
+              <h2>
+                Información del pedido
+              </h2>
+            </div>
+
+
+            <div class="form-field">
+
+              <label for="customerName">
+                Nombre
+              </label>
+
+              <input
+                type="text"
+                id="customerName"
+                placeholder="Escribe tu nombre"
+                autocomplete="name"
+              >
+
+            </div>
+
+
+            <div class="form-field">
+
+              <label for="branch">
+                Sucursal
+              </label>
+
+              <select id="branch">
+
+                <option value="">
+                  Selecciona una sucursal
+                </option>
+
+                <option value="Copiapó - Av. Copayapu #3997">
+                  Copiapó
+                </option>
+
+                <option value="Bahía Inglesa - Av. El Morro #610">
+                  Bahía Inglesa
+                </option>
+
+                <option
+                  value="La Serena - Próximamente"
+                  disabled
+                >
+                  La Serena — Próximamente
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <fieldset class="order-type-field">
+
+              <legend>
+                Tipo de pedido
+              </legend>
+
+              <div class="order-type">
+
+                <button
+                  type="button"
+                  class="active"
+                  data-type="Delivery"
+                >
+                  <span aria-hidden="true">
+                    🛵
+                  </span>
+
+                  Delivery
+                </button>
+
+
+                <button
+                  type="button"
+                  data-type="Retiro en local"
+                >
+                  <span aria-hidden="true">
+                    🛍
+                  </span>
+
+                  Retiro
+                </button>
+
+              </div>
+
+            </fieldset>
+
+
+            <div
+              class="form-field"
+              id="addressWrap"
+            >
+
+              <label for="address">
+                Dirección
+              </label>
+
+              <input
+                type="text"
+                id="address"
+                placeholder="Escribe tu dirección"
+                autocomplete="street-address"
+              >
+
+            </div>
+
+
+            <div class="form-field">
+
+              <label for="comments">
+                Comentarios
+              </label>
+
+              <textarea
+                id="comments"
+                rows="3"
+                placeholder="Indicaciones especiales para tu pedido"
+              ></textarea>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="whatsapp-btn"
+              id="sendOrder"
+            >
+              <img
+                src="iconowhattsap.png"
+                alt=""
+              >
+
+              <span>
+                Enviar pedido por WhatsApp
+              </span>
+            </button>
+
+
+            <p class="form-note">
+              Te redirigiremos a WhatsApp para confirmar el pedido.
+            </p>
+
+          </section>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BENEFICIOS INFERIORES
+    ====================================================== -->
+
+    <section class="orders-benefits">
+
+      <article>
+
+        <div class="orders-benefit-icon">
+          <img
+            src="pagotarjeta.png"
+            alt=""
+          >
+        </div>
+
+        <div>
+          <h3>
+            Pago contra entrega
+          </h3>
+
+          <p>
+            Paga cuando recibas tu pedido.
+          </p>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <div class="orders-benefit-icon">
+          <img
+            src="entregas.png"
+            alt=""
+          >
+        </div>
+
+        <div>
+          <h3>
+            Entregas rápidas
+          </h3>
+
+          <p>
+            En Copiapó y Bahía Inglesa.
+          </p>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <div class="orders-benefit-icon">
+          <img
+            src="productosfrescos.png"
+            alt=""
+          >
+        </div>
+
+        <div>
+          <h3>
+            Productos frescos
+          </h3>
+
+          <p>
+            Seleccionados cuidadosamente cada día.
+          </p>
+        </div>
+
+      </article>
+
+
+      <article>
+
+        <div class="orders-benefit-icon whatsapp-support-icon">
+          <img
+            src="iconowhattsap.png"
+            alt=""
+          >
+        </div>
+
+        <div>
+          <h3>
+            Atención personalizada
+          </h3>
+
+          <p>
+            Escríbenos y te ayudamos con tu pedido.
+          </p>
+        </div>
+
+      </article>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       WHATSAPP FLOTANTE
+  ====================================================== -->
+
+  <a
+    href="https://wa.me/56956783197?text=Hola%20Pisco%20%26%20Mar%2C%20quiero%20hacer%20una%20consulta."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="floating-whatsapp"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img
+      src="iconowhattsap.png"
+      alt=""
+    >
+  </a>
+
+
+  <script src="pedidos.js"></script>
+
+</body>
+</html>

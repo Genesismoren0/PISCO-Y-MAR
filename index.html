@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Pisco & Mar Restaurante. Cocina peruana, ceviches, mariscos, delivery y retiro en local."
+  >
+
+  <title>Pisco & Mar | Restaurante peruano</title>
+
+  <!-- Tipografías similares al mockup -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       ENCABEZADO
+  ====================================================== -->
+
+  <header class="header" id="inicio">
+
+    <a
+      href="index.html"
+      class="logo"
+      aria-label="Ir al inicio"
+    >
+      <img
+        src="logo.png"
+        alt="Pisco & Mar Restaurante"
+      >
+    </a>
+
+
+    <nav
+      class="nav"
+      id="nav"
+      aria-label="Navegación principal"
+    >
+      <a href="#inicio" class="active">
+        Inicio
+      </a>
+
+      <a href="#nosotros">
+        Nosotros
+      </a>
+
+      <a href="#promos">
+        Promos
+      </a>
+
+      <a href="#locales">
+        Locales
+      </a>
+
+      <a href="#contacto">
+        Contacto
+      </a>
+    </nav>
+
+
+    <div class="header-actions">
+
+      <a
+        href="pedidos.html"
+        class="pedido-btn"
+      >
+        <span>Pedidos online</span>
+
+        <img
+          src="deliveryoretiro.png"
+          alt=""
+          aria-hidden="true"
+        >
+      </a>
+
+
+      <button
+        type="button"
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =====================================================
+         PORTADA
+    ====================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <p class="hero-kicker">
+          Cocina peruana con
+        </p>
+
+
+        <h1>
+          Sabor
+          <span>de mar</span>
+        </h1>
+
+
+        <div
+          class="hero-wave"
+          aria-hidden="true"
+        ></div>
+
+
+        <p class="hero-description">
+          Mariscos frescos, recetas auténticas y el toque
+          peruano que nos hace únicos.
+        </p>
+
+
+        <div class="hero-buttons">
+
+          <a
+            href="#nosotros"
+            class="btn-primary"
+          >
+            <span>Conoce más</span>
+            <img src="lineasonduladasdoblenegra.png" alt="" aria-hidden="true">
+          </a>
+
+
+          <a
+            href="pedidos.html"
+            class="btn-secondary"
+          >
+            <span>Pedidos online</span>
+
+            <img
+              src="pedidos_online.png"
+              alt=""
+              aria-hidden="true"
+            >
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BENEFICIOS
+    ====================================================== -->
+
+    <section
+      class="benefits"
+      id="nosotros"
+    >
+
+      <article class="benefit-item">
+
+        <div class="benefit-image">
+          <img
+            src="img_ingredientesfrescos.png"
+            alt=""
+          >
+        </div>
+
+        <div>
+          <h3>Ingredientes frescos</h3>
+
+          <p>
+            Seleccionados cada día del mar a tu mesa.
+          </p>
+        </div>
+
+      </article>
+
+
+      <article class="benefit-item">
+
+        <div class="benefit-image">
+          <img
+            src="img_recetasaut.png"
+            alt=""
+          >
+        </div>
+
+        <div>
+          <h3>Recetas auténticas</h3>
+
+          <p>
+            Cocina peruana tradicional con un toque moderno.
+          </p>
+        </div>
+
+      </article>
+
+
+      <article class="benefit-item">
+
+        <div class="benefit-image">
+          <img
+            src="img_deliveryrapido.png"
+            alt=""
+          >
+        </div>
+
+        <div>
+          <h3>Delivery rápido</h3>
+
+          <p>
+            Llevamos tu pedido donde estés, rápido y seguro.
+          </p>
+        </div>
+
+      </article>
+
+
+      <article class="benefit-item">
+
+        <div class="benefit-image">
+          <img
+            src="img_experienciaunica.png"
+            alt=""
+          >
+        </div>
+
+        <div>
+          <h3>Experiencia única</h3>
+
+          <p>
+            Ambiente acogedor frente al mar para disfrutar.
+          </p>
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         PLATOS DESTACADOS
+    ====================================================== -->
+
+    <section class="destacados">
+
+      <div class="section-title">
+
+        <span class="section-title-line"></span>
+
+        <h2>Platos destacados</h2>
+
+        <span
+          class="section-title-wave"
+          aria-hidden="true"
+        ></span>
+
+      </div>
+
+
+      <div class="destacados-row">
+
+        <button
+          type="button"
+          class="slider-arrow slider-prev"
+          id="sliderPrev"
+          aria-label="Ver platos anteriores"
+        >
+          ‹
+        </button>
+
+
+        <div
+          class="destacados-track"
+          id="destacadosTrack"
+        >
+
+          <article class="dish-card">
+
+            <img
+              src="imagen1.png"
+              alt="Pulpo a la Parrilla"
+            >
+
+            <div>
+              <h3>Pulpo a la Parrilla</h3>
+            </div>
+
+          </article>
+
+
+          <article class="dish-card">
+
+            <img
+              src="imagen5.png"
+              alt="Arroz con Mariscos"
+            >
+
+            <div>
+              <h3>Arroz con Mariscos</h3>
+            </div>
+
+          </article>
+
+
+          <article class="dish-card">
+
+            <img
+              src="imagen6.png"
+              alt="Ceviche Clásico"
+            >
+
+            <div>
+              <h3>Ceviche Clásico</h3>
+            </div>
+
+          </article>
+
+
+          <article class="dish-card">
+
+            <img
+              src="imagen2.png"
+              alt="Lomo Saltado"
+            >
+
+            <div>
+              <h3>Lomo Saltado</h3>
+            </div>
+
+          </article>
+
+
+          <article class="dish-card">
+
+            <img
+              src="imagen11.png"
+              alt="Tiradito de Atún"
+            >
+
+            <div>
+              <h3>Tiradito de Atún</h3>
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="slider-arrow slider-next"
+          id="sliderNext"
+          aria-label="Ver los siguientes platos"
+        >
+          ›
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROMOCIONES
+    ====================================================== -->
+
+    <section
+      class="promos"
+      id="promos"
+    >
+
+      <!-- PROMOCIÓN EXCLUSIVA WEB -->
+
+      <article class="promo-card promo-ceviche">
+
+        <div class="promo-ceviche-content">
+
+          <p class="promo-label">
+            Promo
+          </p>
+
+          <h2>
+            Pedidos online
+            <span>15% OFF</span>
+          </h2>
+
+          <p class="promo-description">
+            Obtén un 15% de descuento en tus productos al pedir directamente en nuestra página web.
+          </p>
+
+          <a
+            href="pedidos.html"
+            class="promo-link"
+          >
+            Pedir ahora
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- DELIVERY O RETIRO -->
+
+      <article class="promo-card promo-delivery">
+
+        <div class="promo-delivery-content">
+
+          <h2>
+            Delivery
+            <span>o retiro</span>
+          </h2>
+
+          <p>
+            Pide online y disfruta donde estés.
+          </p>
+
+
+          <div class="delivery-decoration">
+
+            <img
+              src="lineaonduladaturquesa.png"
+              alt=""
+              class="delivery-wave-image"
+              aria-hidden="true"
+            >
+
+            <img
+              src="pedidos_online.png"
+              alt="Delivery o retiro"
+              class="delivery-scooter-image"
+            >
+
+          </div>
+
+
+          <a
+            href="pedidos.html"
+            class="promo-link delivery-link"
+          >
+            Pedir ahora
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- LOCALES -->
+
+      <article
+        class="promo-card promo-locales"
+        id="locales"
+      >
+
+        <div class="promo-locales-content">
+
+          <h2>
+            Nuestros
+            <span>locales</span>
+          </h2>
+
+          <p>
+            Visítanos en nuestras sucursales.
+          </p>
+
+
+          <img
+            src="img_ubicacion.png"
+            alt="Ubicaciones de Pisco & Mar"
+            class="promo-location-image"
+          >
+
+
+          <a
+            href="https://wa.me/56956783197?text=Hola%20Pisco%20%26%20Mar%2C%20quiero%20consultar%20por%20sus%20locales."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="promo-link locations-link"
+          >
+            Ver locales
+            <span aria-hidden="true">→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         EXPERIENCIA
+    ====================================================== -->
+
+    <section class="experiencia">
+
+      <div class="experiencia-content">
+
+        <p class="experiencia-kicker">
+          Vive la experiencia
+        </p>
+
+        <h2>
+          Domo Lounge
+        </h2>
+
+        <img
+          src="lineaonduladablanca.png"
+          alt=""
+          class="experiencia-wave"
+          aria-hidden="true"
+        >
+
+        <p class="experiencia-description">
+          Un ambiente único frente al mar, buena música
+          y los mejores sabores del Perú.
+        </p>
+
+        <a
+          href="https://wa.me/56956783197?text=Hola%20Pisco%20%26%20Mar%2C%20quiero%20reservar%20una%20mesa."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Reserva tu mesa
+          <span aria-hidden="true">→</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INSTAGRAM
+    ====================================================== -->
+
+    <section
+      class="instagram-section"
+      id="contacto"
+    >
+
+      <div class="instagram-box">
+
+        <img
+          src="logoinstagram.png"
+          alt="Instagram"
+        >
+
+        <div>
+          <p>Síguenos en Instagram</p>
+
+          <a
+            href="https://www.instagram.com/piscoymar/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @piscoymar
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="instagram-gallery">
+
+        <a
+          href="https://www.instagram.com/piscoymar/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="imagen3.png"
+            alt="Plato de Pisco & Mar"
+          >
+        </a>
+
+
+        <a
+          href="https://www.instagram.com/piscoymar/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="trago1.png"
+            alt="Cóctel de Pisco & Mar"
+          >
+        </a>
+
+
+        <a
+          href="https://www.instagram.com/piscoymar/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="imagen8.png"
+            alt="Plato peruano"
+          >
+        </a>
+
+
+        <a
+          href="https://www.instagram.com/piscoymar/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="trago2.png"
+            alt="Trago de Pisco & Mar"
+          >
+        </a>
+
+
+        <a
+          href="https://www.instagram.com/piscoymar/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="imagen14.png"
+            alt="Plato destacado"
+          >
+        </a>
+
+
+        <a
+          href="https://www.instagram.com/piscoymar/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="imagenbannerabajo.png"
+            alt="Restaurante Pisco & Mar"
+          >
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       WHATSAPP FLOTANTE
+  ====================================================== -->
+
+  <a
+    href="https://wa.me/56956783197?text=Hola%20Pisco%20%26%20Mar%2C%20quiero%20hacer%20una%20consulta."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="floating-whatsapp"
+    aria-label="Contactar por WhatsApp"
+  >
+    <img
+      src="iconowhattsap.png"
+      alt=""
+    >
+  </a>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
