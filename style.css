@@ -1,4 +1,6 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
 /* =========================================================
    CONFIGURACIÓN GENERAL
 ========================================================= */
@@ -198,6 +200,7 @@ main {
   background: var(--white);
 }
 
+
 /* =========================================================
    PORTADA
 ========================================================= */
@@ -352,6 +355,7 @@ main {
   font-size: 18px;
   line-height: 1;
 }
+
 
 /* =========================================================
    BENEFICIOS
@@ -651,6 +655,7 @@ main {
   background: transparent;
 }
 
+
 /* =========================================================
    PLATOS DESTACADOS
 ========================================================= */
@@ -916,6 +921,7 @@ main {
   object-fit: contain;
 }
 
+
 /* =========================================================
    TABLET
 ========================================================= */
@@ -978,7 +984,6 @@ main {
   .instagram-section {
     padding-inline: 24px;
   }
-
 }
 
 /* =========================================================
@@ -1121,7 +1126,6 @@ main {
     overflow-x: auto;
     padding-bottom: 6px;
   }
-
 }
 
 /* =========================================================
@@ -1284,8 +1288,8 @@ main {
     width: 57px;
     height: 57px;
   }
-
 }
+
 
 /* =========================================================
    HEADER AL HACER SCROLL
@@ -1310,60 +1314,59 @@ main {
     padding .25s ease;
 }
 
-.header-scrolled .logo{
-  height:68px;
+.header-scrolled .logo {
+  height: 68px;
 }
 
-.header-scrolled .logo img{
-  height:95px;
+.header-scrolled .logo img {
+  height: 95px;
 }
 
-.header-scrolled .nav a{
-  padding-top:28px;
-  padding-bottom:24px;
+.header-scrolled .nav a {
+  padding-top: 28px;
+  padding-bottom: 24px;
 }
 
 /* =========================================================
    ANIMACIONES AL APARECER
 ========================================================= */
-.hidden{
-  opacity:0;
-  transform:translateY(28px);
+.hidden {
+  opacity: 0;
+  transform: translateY(28px);
   transition:
     opacity .7s ease,
     transform .7s ease;
 }
 
-.show{
-  opacity:1;
-  transform:translateY(0);
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Accesibilidad */
-@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion: reduce) {
   .hidden,
-  .show{
-    opacity:1;
-    transform:none;
-    transition:none;
+  .show {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
-
 }
 
 /* =========================================================
    AJUSTE RESPONSIVE
 ========================================================= */
-@media (max-width:860px){
-  .header-scrolled{
-    height:76px;
-    padding:0 15px;
+@media (max-width: 860px) {
+  .header-scrolled {
+    height: 76px;
+    padding: 0 15px;
   }
-
 }
 
 /* =========================================================
    AJUSTES FINALES — compatibles con index.html corregido
 ========================================================= */
+
 /* Imágenes correctas en botones */
 .pedido-btn img,
 .btn-secondary img {
@@ -1375,7 +1378,13 @@ main {
 /* Hero: plato visible y onda turquesa real */
 .hero {
   background-image:
-    linear-gradient(90deg, #03191f 0%, rgba(3, 25, 31, 0.96) 30%, rgba(3, 25, 31, 0.72) 48%, rgba(3, 25, 31, 0.10) 74%),
+    linear-gradient(
+      90deg,
+      #03191f 0%,
+      rgba(3, 25, 31, 0.96) 30%,
+      rgba(3, 25, 31, 0.72) 48%,
+      rgba(3, 25, 31, 0.10) 74%
+    ),
     url("imagenportada.png");
   background-repeat: no-repeat;
   background-position: center, right center;
@@ -1388,7 +1397,7 @@ main {
   background: url("lineaonduladaturquesa.png") center / contain no-repeat;
 }
 
-/* Botón Conoce más: usar imagen en lugar del carácter ondulado */
+/* Botón Conoce más */
 .btn-primary img {
   width: 31px;
   height: 13px;
@@ -1435,7 +1444,9 @@ main {
   display: block;
   width: 52px;
   height: 16px;
-  background: url("lineasonduladasdoblenegra.png") center / contain no-repeat;
+  background:
+    url("lineasonduladasdoblenegra.png")
+    center / contain no-repeat;
 }
 
 .section-title-wave {
@@ -1444,7 +1455,9 @@ main {
   height: 18px;
   font-size: 0;
   color: transparent;
-  background: url("lineaonduladabicolor.png") center / contain no-repeat;
+  background:
+    url("lineaonduladabicolor.png")
+    center / contain no-repeat;
 }
 
 /* Tarjeta de locales */
@@ -1465,18 +1478,25 @@ main {
 @media (max-width: 620px) {
   .hero {
     background-image:
-      linear-gradient(180deg, rgba(3, 25, 31, 0.05) 0%, rgba(3, 25, 31, 0.60) 48%, #03191f 82%),
+      linear-gradient(
+        180deg,
+        rgba(3, 25, 31, 0.05) 0%,
+        rgba(3, 25, 31, 0.60) 48%,
+        #03191f 82%
+      ),
       url("imagenportada.png");
+
     background-position: center, center 52px;
     background-size: 100% 100%, auto 64%;
   }
-
 }
+
 
 /* =========================================================
    AJUSTES VISUALES SOLICITADOS — 20/07/2026
    Estos estilos solo corrigen hero, beneficios, delivery y ondas.
 ========================================================= */
+
 /* HERO: plato más pequeño y desplazado hacia la derecha como el mockup */
 .hero {
   background-image:
@@ -1511,8 +1531,16 @@ main {
 /* BENEFICIOS: fondo y cajas compatibles con los colores reales de cada PNG */
 .benefits {
   background:
-    linear-gradient(rgba(18, 149, 146, 0.94), rgba(18, 149, 146, 0.94)),
-    repeating-radial-gradient(circle at 8% 30%, transparent 0 24px, rgba(255,255,255,.08) 25px 26px, transparent 27px 48px);
+    linear-gradient(
+      rgba(18, 149, 146, 0.94),
+      rgba(18, 149, 146, 0.94)
+    ),
+    repeating-radial-gradient(
+      circle at 8% 30%,
+      transparent 0 24px,
+      rgba(255, 255, 255, .08) 25px 26px,
+      transparent 27px 48px
+    );
 }
 
 .benefit-item {
@@ -1538,10 +1566,22 @@ main {
 }
 
 /* Cada imagen conserva su tono original y queda integrada con el fondo */
-.benefit-item:nth-child(1) .benefit-image { background: #0a5d65; }
-.benefit-item:nth-child(2) .benefit-image { background: #156167; }
-.benefit-item:nth-child(3) .benefit-image { background: #115e62; }
-.benefit-item:nth-child(4) .benefit-image { background: #115e62; }
+.benefit-item:nth-child(1) .benefit-image {
+  background: #0a5d65;
+}
+
+.benefit-item:nth-child(2) .benefit-image {
+  background: #156167;
+}
+
+.benefit-item:nth-child(3) .benefit-image {
+  background: #115e62;
+}
+
+.benefit-item:nth-child(4) .benefit-image {
+  background: #115e62;
+}
+
 .benefit-item h3 {
   font-size: 14px;
 }
@@ -1629,7 +1669,6 @@ main {
     width: 62px;
     height: 62px;
   }
-
 }
 
 @media (max-width: 620px) {
@@ -1642,6 +1681,7 @@ main {
         #03191f 82%
       ),
       url("imagenportada.png");
+
     background-position: center, center 58px;
     background-size: 100% 100%, auto 58%;
   }
@@ -1658,12 +1698,13 @@ main {
     width: 68px;
     height: 68px;
   }
-
 }
+
 
 /* =========================================================
    CORRECCIONES FINALES: COLORES, MOTOS, ONDAS Y PORTADA
 ========================================================= */
+
 /* Portada: imagen pegada al borde derecho, sin espacio vacío */
 .hero {
   background-image:
@@ -1796,7 +1837,6 @@ main {
   .hero-content {
     padding-right: 48%;
   }
-
 }
 
 @media (max-width: 620px) {
@@ -1809,6 +1849,7 @@ main {
         #03191f 82%
       ),
       url("imagenportada.png");
+
     background-position: center, center 58px;
     background-size: 100% 100%, auto 60%;
   }
@@ -1822,7 +1863,6 @@ main {
     width: 62px;
     height: 22px;
   }
-
 }
 
 /* =========================================================
@@ -1832,6 +1872,7 @@ main {
    - Tarjeta Delivery: pedidos_online.png
    - WhatsApp: iconowhattsap.png más grande
 ========================================================= */
+
 /* Botón superior Pedidos online: mostrar la imagen real */
 .pedido-btn::after {
   content: none !important;
@@ -1916,5 +1957,1595 @@ main {
     width: 55px !important;
     height: 55px !important;
   }
+}
 
+
+.benefits-section img,
+.benefits-bar img,
+.benefit-item img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.benefits-section h3,
+.benefits-bar h3,
+.benefit-item h3 {
+  font-size: 13px;
+}
+
+.benefits-section p,
+.benefits-bar p,
+.benefit-item p {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+
+/* Agrandar únicamente el ícono del pez */
+.benefit-item:first-child img {
+  transform: scale(1.5);
+}
+
+
+/* ==========================================
+   AJUSTES DEL MENÚ SUPERIOR
+========================================== */
+
+/* Inicio, Nosotros, Promos, Locales y Contacto */
+.nav a {
+  font-size: 14px;
+}
+
+/* Botón Pedidos Online */
+.pedido-btn {
+  font-size: 12px;
+  gap: 10px;
+}
+
+/* Ícono de delivery dentro del botón */
+.pedido-btn img {
+  display: block !important;
+  content: url("img_deliveryrapido.png");
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar íconos duplicados */
+.pedido-btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* Mover botón Pedidos Online hacia la derecha */
+@media (min-width: 861px) {
+  .header-actions {
+    transform: translateX(0px);
+  }
+}
+
+
+/* ==========================================
+   BOTONES DE PORTADA MÁS GRANDES
+========================================== */
+
+/* Tamaño de ambos botones */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  min-width: 230px;
+  min-height: 60px;
+  padding: 15px 24px;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 15px;
+}
+
+/* CONOCE MÁS - Ícono de ondas negras */
+.hero-buttons .btn-primary img {
+  display: block;
+  content: url("lineasonduladasdoblenegra.png");
+  width: 42px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* PEDIDOS ONLINE - Ícono de moto */
+.hero-buttons .btn-secondary img {
+  display: block !important;
+  content: url("moto_online.png");
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar que aparezca otra moto duplicada */
+.hero-buttons .btn-secondary::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* ==========================================
+   PORTADA - LETRAS E ICONOS MÁS GRANDES
+========================================== */
+
+/* Mismo tamaño de letras en ambos botones */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  font-size: 16px;
+  font-weight: 800;
+  min-width: 245px;
+  min-height: 65px;
+  gap: 18px;
+}
+
+/* CONOCE MÁS - Ondas negras */
+.hero-buttons .btn-primary img {
+  display: block !important;
+  content: url("lineasonduladasdoblenegra.png");
+  width: 70px;
+  height: 45px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* PEDIDOS ONLINE - Moto */
+.hero-buttons .btn-secondary img {
+  display: block !important;
+  content: url("moto_online.png");
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar íconos duplicados */
+.hero-buttons .btn-secondary::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* Reducir un poco ambos botones de la portada */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  min-width: 225px;
+  min-height: 30px;
+  padding: 3px 18px;
+}
+
+
+/* ==========================================
+   PISCO & MAR - AJUSTE RESPONSIVE GENERAL
+   PC, NOTEBOOK, TABLET Y CELULAR
+========================================== */
+
+/* Contenedores centrados */
+.header,
+.hero-content,
+.experiencia-content {
+  max-width: 1420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* HEADER - PC Y NOTEBOOK */
+@media (min-width: 1101px) {
+  .header:not(.header-scrolled) {
+    width: min(calc(100% - 64px), 1420px);
+    grid-template-columns: 210px minmax(0, 1fr) 190px;
+    gap: 20px;
+  }
+
+  .header-scrolled {
+    grid-template-columns: 210px minmax(0, 1fr) 190px;
+    gap: 20px;
+  }
+
+  .nav {
+    gap: clamp(16px, 2vw, 35px);
+  }
+
+  .nav a {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    transform: none !important;
+    justify-content: flex-end;
+  }
+
+  .pedido-btn {
+    white-space: nowrap;
+  }
+}
+
+/* PORTADA - DISTRIBUCIÓN EQUILIBRADA */
+@media (min-width: 1101px) {
+  .hero-content {
+    width: min(calc(100% - 64px), 1420px);
+    padding-right: 52%;
+  }
+
+  .hero {
+    background-position: center, right center;
+    background-size: 100% 100%, auto 100%;
+  }
+}
+
+/* BENEFICIOS - PC */
+@media (min-width: 1101px) {
+  .benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .benefit-item {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .benefit-image,
+  .benefit-image img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.benefits-section img,
+.benefits-bar img,
+.benefit-item img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.benefits-section h3,
+.benefits-bar h3,
+.benefit-item h3 {
+  font-size: 13px;
+}
+
+.benefits-section p,
+.benefits-bar p,
+.benefit-item p {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+
+/* Agrandar únicamente el ícono del pez */
+.benefit-item:first-child img {
+  transform: scale(1.5);
+}
+
+
+/* ==========================================
+   AJUSTES DEL MENÚ SUPERIOR
+========================================== */
+
+/* Inicio, Nosotros, Promos, Locales y Contacto */
+.nav a {
+  font-size: 14px;
+}
+
+/* Botón Pedidos Online */
+.pedido-btn {
+  font-size: 12px;
+  gap: 10px;
+}
+
+/* Ícono de delivery dentro del botón */
+.pedido-btn img {
+  display: block !important;
+  content: url("img_deliveryrapido.png");
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar íconos duplicados */
+.pedido-btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* Mover botón Pedidos Online hacia la derecha */
+@media (min-width: 861px) {
+  .header-actions {
+    transform: translateX(0px);
+  }
+}
+
+
+/* ==========================================
+   BOTONES DE PORTADA MÁS GRANDES
+========================================== */
+
+/* Tamaño de ambos botones */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  min-width: 230px;
+  min-height: 60px;
+  padding: 15px 24px;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 15px;
+}
+
+/* CONOCE MÁS - Ícono de ondas negras */
+.hero-buttons .btn-primary img {
+  display: block;
+  content: url("lineasonduladasdoblenegra.png");
+  width: 42px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* PEDIDOS ONLINE - Ícono de moto */
+.hero-buttons .btn-secondary img {
+  display: block !important;
+  content: url("moto_online.png");
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar que aparezca otra moto duplicada */
+.hero-buttons .btn-secondary::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* ==========================================
+   PORTADA - LETRAS E ICONOS MÁS GRANDES
+========================================== */
+
+/* Mismo tamaño de letras en ambos botones */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  font-size: 16px;
+  font-weight: 800;
+  min-width: 245px;
+  min-height: 65px;
+  gap: 18px;
+}
+
+/* CONOCE MÁS - Ondas negras */
+.hero-buttons .btn-primary img {
+  display: block !important;
+  content: url("lineasonduladasdoblenegra.png");
+  width: 70px;
+  height: 45px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* PEDIDOS ONLINE - Moto */
+.hero-buttons .btn-secondary img {
+  display: block !important;
+  content: url("moto_online.png");
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar íconos duplicados */
+.hero-buttons .btn-secondary::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* Reducir un poco ambos botones de la portada */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  min-width: 225px;
+  min-height: 30px;
+  padding: 3px 18px;
+}
+
+
+/* ==========================================
+   PISCO & MAR - AJUSTE RESPONSIVE GENERAL
+   PC, NOTEBOOK, TABLET Y CELULAR
+========================================== */
+
+/* Contenedores centrados */
+.header,
+.hero-content,
+.experiencia-content {
+  max-width: 1420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* HEADER - PC Y NOTEBOOK */
+@media (min-width: 1101px) {
+  .header:not(.header-scrolled) {
+    width: min(calc(100% - 64px), 1420px);
+    grid-template-columns: 210px minmax(0, 1fr) 190px;
+    gap: 20px;
+  }
+
+  .header-scrolled {
+    grid-template-columns: 210px minmax(0, 1fr) 190px;
+    gap: 20px;
+  }
+
+  .nav {
+    gap: clamp(16px, 2vw, 35px);
+  }
+
+  .nav a {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    transform: none !important;
+    justify-content: flex-end;
+  }
+
+  .pedido-btn {
+    white-space: nowrap;
+  }
+}
+
+/* PORTADA - DISTRIBUCIÓN EQUILIBRADA */
+@media (min-width: 1101px) {
+  .hero-content {
+    width: min(calc(100% - 64px), 1420px);
+    padding-right: 52%;
+  }
+
+  .hero {
+    background-position: center, right center;
+    background-size: 100% 100%, auto 100%;
+  }
+}
+
+/* BENEFICIOS - PC */
+@media (min-width: 1101px) {
+  .benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .benefit-item {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .benefit-image,
+  .benefit-image img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.benefits-section img,
+.benefits-bar img,
+.benefit-item img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.benefits-section h3,
+.benefits-bar h3,
+.benefit-item h3 {
+  font-size: 13px;
+}
+
+.benefits-section p,
+.benefits-bar p,
+.benefit-item p {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+
+/* Agrandar únicamente el ícono del pez */
+.benefit-item:first-child img {
+  transform: scale(1.5);
+}
+
+
+/* ==========================================
+   AJUSTES DEL MENÚ SUPERIOR
+========================================== */
+
+/* Inicio, Nosotros, Promos, Locales y Contacto */
+.nav a {
+  font-size: 14px;
+}
+
+/* Botón Pedidos Online */
+.pedido-btn {
+  font-size: 12px;
+  gap: 10px;
+}
+
+/* Ícono de delivery dentro del botón */
+.pedido-btn img {
+  display: block !important;
+  content: url("img_deliveryrapido.png");
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  max-height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar íconos duplicados */
+.pedido-btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* Mover botón Pedidos Online hacia la derecha */
+@media (min-width: 861px) {
+  .header-actions {
+    transform: translateX(0px);
+  }
+}
+
+
+/* ==========================================
+   BOTONES DE PORTADA MÁS GRANDES
+========================================== */
+
+/* Tamaño de ambos botones */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  min-width: 230px;
+  min-height: 60px;
+  padding: 15px 24px;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 15px;
+}
+
+/* CONOCE MÁS - Ícono de ondas negras */
+.hero-buttons .btn-primary img {
+  display: block;
+  content: url("lineasonduladasdoblenegra.png");
+  width: 42px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* PEDIDOS ONLINE - Ícono de moto */
+.hero-buttons .btn-secondary img {
+  display: block !important;
+  content: url("moto_online.png");
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar que aparezca otra moto duplicada */
+.hero-buttons .btn-secondary::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* ==========================================
+   PORTADA - LETRAS E ICONOS MÁS GRANDES
+========================================== */
+
+/* Mismo tamaño de letras en ambos botones */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  font-size: 16px;
+  font-weight: 800;
+  min-width: 245px;
+  min-height: 65px;
+  gap: 18px;
+}
+
+/* CONOCE MÁS - Ondas negras */
+.hero-buttons .btn-primary img {
+  display: block !important;
+  content: url("lineasonduladasdoblenegra.png");
+  width: 70px;
+  height: 45px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* PEDIDOS ONLINE - Moto */
+.hero-buttons .btn-secondary img {
+  display: block !important;
+  content: url("moto_online.png");
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Evitar íconos duplicados */
+.hero-buttons .btn-secondary::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* Reducir un poco ambos botones de la portada */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  min-width: 225px;
+  min-height: 30px;
+  padding: 3px 18px;
+}
+
+
+/* ==========================================
+   PISCO & MAR - AJUSTE RESPONSIVE GENERAL
+   PC, NOTEBOOK, TABLET Y CELULAR
+========================================== */
+
+/* Contenedores centrados */
+.header,
+.hero-content,
+.experiencia-content {
+  max-width: 1420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* HEADER - PC Y NOTEBOOK */
+@media (min-width: 1101px) {
+  .header:not(.header-scrolled) {
+    width: min(calc(100% - 64px), 1420px);
+    grid-template-columns: 210px minmax(0, 1fr) 190px;
+    gap: 20px;
+  }
+
+  .header-scrolled {
+    grid-template-columns: 210px minmax(0, 1fr) 190px;
+    gap: 20px;
+  }
+
+  .nav {
+    gap: clamp(16px, 2vw, 35px);
+  }
+
+  .nav a {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    transform: none !important;
+    justify-content: flex-end;
+  }
+
+  .pedido-btn {
+    white-space: nowrap;
+  }
+}
+
+/* PORTADA - DISTRIBUCIÓN EQUILIBRADA */
+@media (min-width: 1101px) {
+  .hero-content {
+    width: min(calc(100% - 64px), 1420px);
+    padding-right: 52%;
+  }
+
+  .hero {
+    background-position: center, right center;
+    background-size: 100% 100%, auto 100%;
+  }
+}
+
+/* BENEFICIOS - PC */
+@media (min-width: 1101px) {
+  .benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .benefit-item {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .benefit-image,
+  .benefit-image img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* NOTEBOOK Y TABLET HORIZONTAL */
+@media (min-width: 861px) and (max-width: 1100px) {
+  .header:not(.header-scrolled) {
+    width: calc(100% - 40px);
+    grid-template-columns: 165px minmax(0, 1fr) 165px;
+    gap: 12px;
+  }
+
+  .header-scrolled {
+    grid-template-columns: 165px minmax(0, 1fr) 165px;
+    gap: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav {
+    gap: clamp(10px, 1.5vw, 20px);
+  }
+
+  .nav a {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    transform: none !important;
+  }
+
+  .pedido-btn {
+    padding: 9px 11px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .pedido-btn img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .hero-content {
+    width: calc(100% - 48px);
+    padding-right: 48%;
+  }
+
+  .hero h1 {
+    font-size: clamp(68px, 8vw, 100px);
+  }
+
+  .benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 14px 24px;
+  }
+
+  .benefit-item {
+    padding: 15px;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .benefit-image,
+  .benefit-image img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* TABLET VERTICAL */
+@media (min-width: 601px) and (max-width: 860px) {
+  .header,
+  .header-scrolled {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .header-actions {
+    transform: none !important;
+  }
+
+  .hero {
+    min-height: 650px;
+  }
+
+  .hero-content {
+    width: calc(100% - 48px);
+    padding-right: 35%;
+  }
+
+  .hero h1 {
+    font-size: clamp(62px, 10vw, 88px);
+  }
+
+  .benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 14px 22px;
+  }
+
+  .benefit-item {
+    padding: 15px;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .benefit-image,
+  .benefit-image img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .promos {
+    width: calc(100% - 40px);
+  }
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+  .header,
+  .header-scrolled {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .header-actions {
+    transform: none !important;
+  }
+
+  .hero {
+    min-height: 680px;
+    padding-top: 90px;
+    padding-bottom: 32px;
+    align-items: flex-end;
+
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(3, 25, 31, 0.08) 0%,
+        rgba(3, 25, 31, 0.65) 43%,
+        #03191f 78%
+      ),
+      url("imagenportada.png");
+
+    background-position: center, center 60px;
+    background-size: 100% 100%, auto 55%;
+    background-repeat: no-repeat;
+  }
+
+  .hero-content {
+    width: calc(100% - 36px);
+    padding-right: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(54px, 16vw, 76px);
+    letter-spacing: -2px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    padding: 8px 16px;
+    font-size: 15px;
+  }
+
+  .hero-buttons .btn-primary img {
+    width: 55px;
+    height: 35px;
+  }
+
+  .hero-buttons .btn-secondary img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+    padding: 12px 20px;
+  }
+
+  .benefit-item {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 15px;
+    min-height: 82px;
+    padding: 13px 0;
+  }
+
+  .benefit-image,
+  .benefit-image img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .benefit-item h3 {
+    font-size: 13px;
+  }
+
+  .benefit-item p {
+    font-size: 12px;
+  }
+
+  .promos {
+    width: calc(100% - 30px);
+  }
+
+  .destacados {
+    width: calc(100% - 24px);
+  }
+
+  .experiencia-content {
+    width: calc(100% - 36px);
+    padding-right: 0;
+  }
+
+  .instagram-section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+
+/* ==========================================
+   AJUSTE FINAL - LOGO Y BOTÓN SUPERIOR
+========================================== */
+
+
+/* ==========================================
+   PISCO & MAR - RESPONSIVE DEFINITIVO
+   ========================================== */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+
+/* HEADER NORMAL */
+
+@media (min-width: 861px) {
+
+  .header:not(.header-scrolled) {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(calc(100% - 48px), 1420px);
+    height: 120px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: minmax(210px, 285px) minmax(0, 1fr) auto;
+    align-items: start;
+    gap: clamp(12px, 2vw, 30px);
+  }
+
+  /* Logo grande, más abajo y sin superposición */
+
+  .header:not(.header-scrolled) .logo {
+    display: flex;
+    position: relative;
+    top: 24px;
+    left: auto;
+    transform: none;
+    width: clamp(210px, 18vw, 285px);
+    height: 135px;
+    overflow: visible;
+  }
+
+  .header:not(.header-scrolled) .logo img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  /* Menú centrado */
+
+  .header:not(.header-scrolled) .nav {
+    position: static;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(12px, 2vw, 34px);
+    min-width: 0;
+  }
+
+  .header .nav a {
+    font-size: clamp(12px, 0.85vw, 15px);
+    white-space: nowrap;
+  }
+
+  /* Pedidos online alineado a la derecha */
+
+  .header:not(.header-scrolled) .header-actions {
+    position: static;
+    left: auto;
+    right: auto;
+    transform: none;
+    justify-self: end;
+    padding-top: 16px;
+  }
+
+  .header .pedido-btn {
+    min-height: 50px;
+    padding: 10px 14px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .header .pedido-btn img {
+    display: block !important;
+    content: url("img_deliveryrapido.png");
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain;
+  }
+
+  .header .pedido-btn::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* HEADER CUANDO BAJAMOS */
+
+  .header.header-scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    height: 74px;
+    padding: 0 max(24px, calc((100% - 1420px) / 2));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+    background: rgba(3, 27, 33, 0.97);
+  }
+
+  .header.header-scrolled .logo {
+    display: none !important;
+  }
+
+  .header.header-scrolled .nav {
+    grid-column: 1;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .header.header-scrolled .header-actions {
+    grid-column: 2;
+    position: static;
+    transform: none;
+    padding: 0;
+    justify-self: end;
+    align-self: center;
+  }
+
+  .header.header-scrolled .nav a {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+
+  .header.header-scrolled .nav a::after {
+    bottom: 12px;
+  }
+}
+
+/* ==========================================
+   PORTADA EN PC Y NOTEBOOK
+   ========================================== */
+
+@media (min-width: 861px) {
+
+  .hero {
+    min-height: clamp(690px, 52vw, 810px);
+    padding-top: 175px;
+    padding-bottom: 60px;
+    background-position: center, right center;
+    background-size: 100% 100%, auto 100%;
+  }
+
+  .hero-content {
+    width: min(calc(100% - 48px), 1420px);
+    padding-right: 0;
+  }
+
+  .hero-content > * {
+    max-width: min(100%, 550px);
+  }
+
+  .hero h1 {
+    font-size: clamp(68px, 7.2vw, 118px);
+    line-height: 0.94;
+    letter-spacing: -3px;
+  }
+
+  .hero h1 span {
+    margin-top: 6px;
+  }
+
+  .hero-description {
+    max-width: 500px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    min-width: 205px;
+    min-height: 55px;
+    padding: 12px 18px;
+    font-size: 14px;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn-primary img {
+    display: block;
+    content: url("lineasonduladasdoblenegra.png");
+    width: 33px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  .hero-buttons .btn-secondary img {
+    display: block !important;
+    content: url("moto_online.png");
+    width: 34px !important;
+    height: 34px !important;
+    object-fit: contain;
+  }
+
+  .hero-buttons .btn-secondary::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* ==========================================
+   NOTEBOOKS Y PANTALLAS MEDIANAS
+   ========================================== */
+
+@media (min-width: 861px) and (max-width: 1250px) {
+
+  .header:not(.header-scrolled) {
+    grid-template-columns: 210px minmax(0, 1fr) auto;
+    gap: 12px;
+  }
+
+  .header:not(.header-scrolled) .logo {
+    width: 210px;
+    top: 30px;
+  }
+
+  .header .nav {
+    gap: 12px;
+  }
+
+  .header .nav a {
+    font-size: 12px;
+  }
+
+  .header .pedido-btn {
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+
+  .hero {
+    padding-top: 180px;
+  }
+
+  .hero-content > * {
+    max-width: min(52%, 500px);
+  }
+
+  .hero h1 {
+    font-size: clamp(64px, 7vw, 92px);
+  }
+
+  .hero-buttons {
+    max-width: 500px;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    min-width: 185px;
+    font-size: 12px;
+  }
+
+  .benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 16px;
+  }
+
+  .benefit-item:nth-child(2) {
+    border-right: none;
+  }
+}
+
+/* ==========================================
+   TABLETS
+   ========================================== */
+
+@media (max-width: 860px) {
+
+  .header,
+  .header:not(.header-scrolled),
+  .header.header-scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    height: 76px;
+    padding: 0 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    background: rgba(3, 27, 33, 0.97);
+  }
+
+  .header:not(.header-scrolled) .logo {
+    display: flex;
+    position: relative;
+    top: 0;
+    width: 155px;
+    height: 70px;
+    overflow: visible;
+  }
+
+  .header:not(.header-scrolled) .logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+  }
+
+  .header.header-scrolled .logo {
+    display: none !important;
+  }
+
+  .header .header-actions,
+  .header.header-scrolled .header-actions {
+    position: static;
+    grid-column: 2;
+    padding: 0;
+    transform: none;
+    align-self: center;
+  }
+
+  .header .pedido-btn {
+    display: none;
+  }
+
+  .header .menu-btn {
+    display: block;
+  }
+
+  .header .nav,
+  .header.header-scrolled .nav {
+    position: absolute;
+    top: 76px;
+    left: 14px;
+    right: 14px;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px;
+    border-radius: 12px;
+    background: #031b21;
+  }
+
+  .header .nav.open,
+  .header.header-scrolled .nav.open {
+    display: flex;
+  }
+
+  .header .nav a {
+    width: 100%;
+    padding: 13px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .hero {
+    min-height: 690px;
+    padding: 125px 0 48px;
+    background-position: center, 62% center;
+    background-size: 100% 100%, cover;
+  }
+
+  .hero-content {
+    width: calc(100% - 44px);
+    padding-right: 0;
+  }
+
+  .hero-content > * {
+    max-width: min(100%, 480px);
+  }
+
+  .hero h1 {
+    font-size: clamp(60px, 10vw, 88px);
+  }
+
+  .hero-buttons {
+    max-width: 480px;
+  }
+
+  .benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================
+   CELULARES
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 690px;
+    padding: 150px 0 45px;
+    align-items: flex-end;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(3, 25, 31, 0.2),
+        rgba(3, 25, 31, 0.84) 52%,
+        #03191f 95%
+      ),
+      url("imagenportada.png");
+    background-position: center, 62% top;
+    background-size: 100% 100%, auto 62%;
+    background-repeat: no-repeat;
+  }
+
+  .hero-content {
+    width: calc(100% - 32px);
+    padding-right: 0;
+  }
+
+  .hero-content > * {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(53px, 14vw, 75px);
+    line-height: 0.95;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-item {
+    border-right: none;
+  }
+}
+
+
+/* LOGO PRINCIPAL MÁS GRANDE - PC Y NOTEBOOK */
+@media (min-width: 861px) {
+  .header .logo,
+  .header-scrolled .logo {
+    width: 340px !important;
+    max-width: none !important;
+    overflow: visible;
+  }
+
+  .header .logo img,
+  .header-scrolled .logo img {
+    width: 340px !important;
+    max-width: none !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+}
+
+/* LOGO EN TABLET Y CELULAR */
+@media (max-width: 860px) {
+  .header .logo,
+  .header-scrolled .logo {
+    width: 185px !important;
+    max-width: none !important;
+  }
+
+  .header .logo img,
+  .header-scrolled .logo img {
+    width: 185px !important;
+    max-width: none !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+}
+
+
+/* ==========================================
+   PISCO & MAR - TEXTOS DE BOTONES MÁS LEGIBLES
+   ========================================== */
+
+/* 1. PROMOCIÓN 15% OFF - PEDIR AHORA */
+.promo-ceviche .promo-link {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  min-height: 42px;
+  padding: 11px 18px;
+  letter-spacing: 0.2px;
+}
+
+/* 2. DELIVERY O RETIRO - PEDIR AHORA */
+.promo-delivery .delivery-link {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  min-height: 42px;
+  padding: 11px 18px;
+  letter-spacing: 0.2px;
+}
+
+/* 3. NUESTROS LOCALES - VER LOCALES */
+.promo-locales .locations-link {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  min-height: 42px;
+  padding: 11px 18px;
+  letter-spacing: 0.2px;
+}
+
+/* 4. DOMO LOUNGE - RESERVA TU MESA */
+.experiencia-content > a {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  min-height: 42px;
+  padding: 11px 18px;
+  letter-spacing: 0.2px;
+}
+
+/* AJUSTE PARA CELULARES */
+@media (max-width: 600px) {
+  .promo-ceviche .promo-link,
+  .promo-delivery .delivery-link,
+  .promo-locales .locations-link,
+  .experiencia-content > a {
+    font-size: 11px !important;
+    min-height: 40px;
+    padding: 10px 15px;
+  }
+}
+
+
+/* ==========================================
+   WHATSAPP - BORDE BLANCO PEGADO AL ICONO
+========================================== */
+
+.floating-whatsapp {
+  width: 58px !important;
+  height: 58px !important;
+  padding: 0 !important;
+  border: 3px solid #ffffff !important;
+  border-radius: 50% !important;
+  background: #25d366 !important;
+  overflow: hidden !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.floating-whatsapp img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  transform: scale(1.8) !important;
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+  .floating-whatsapp {
+    width: 54px !important;
+    height: 54px !important;
+  }
+}
+
+
+/* ==========================================
+   PISCO & MAR - ICONOS GRANDES EN PORTADA
+========================================== */
+
+/* CONOCE MÁS - Ondas negras */
+.hero-buttons .btn-primary img {
+  content: url("lineasonduladasdoblenegra.png");
+  display: block !important;
+  width: 65px !important;
+  height: 38px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  flex-shrink: 0;
+}
+
+/* PEDIDOS ONLINE - Moto */
+.hero-buttons .btn-secondary img {
+  content: url("moto_online.png");
+  display: block !important;
+  width: 55px !important;
+  height: 55px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  flex-shrink: 0;
+}
+
+/* Evitar iconos duplicados */
+.hero-buttons .btn-secondary::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Mantener ambos botones proporcionados */
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  gap: 12px !important;
+  min-height: 65px;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 600px) {
+  .hero-buttons .btn-primary img {
+    width: 55px !important;
+    height: 32px !important;
+  }
+
+  .hero-buttons .btn-secondary img {
+    width: 48px !important;
+    height: 48px !important;
+  }
 }

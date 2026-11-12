@@ -1,12 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
@@ -17,30 +14,20 @@
 
   <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
-  <!-- Estilos de la página de pedidos -->
   <link rel="stylesheet" href="pedidos.css">
 </head>
 
 <body>
 
-  <!-- =====================================================
-       ENCABEZADO
-  ====================================================== -->
-
+  <!-- ENCABEZADO -->
   <header class="orders-header">
-
     <div class="orders-header-inner">
 
       <a
@@ -48,39 +35,20 @@
         class="orders-logo"
         aria-label="Volver al inicio de Pisco & Mar"
       >
-        <img
-          src="logo2.png"
-          alt="Pisco & Mar Restaurante"
-        >
+        <img src="logo2.png" alt="Pisco & Mar Restaurante">
       </a>
-
 
       <nav
         class="orders-nav"
         id="ordersNav"
         aria-label="Navegación principal"
       >
-        <a href="index.html">
-          Inicio
-        </a>
-
-        <a href="index.html#nosotros">
-          Nosotros
-        </a>
-
-        <a href="index.html#promos">
-          Promos
-        </a>
-
-        <a href="index.html#locales">
-          Locales
-        </a>
-
-        <a href="index.html#contacto">
-          Contacto
-        </a>
+        <a href="index.html">Inicio</a>
+        <a href="index.html#nosotros">Nosotros</a>
+        <a href="index.html#promos">Promos</a>
+        <a href="index.html#locales">Locales</a>
+        <a href="index.html#contacto">Contacto</a>
       </nav>
-
 
       <div class="orders-actions">
 
@@ -91,18 +59,12 @@
           aria-label="Ir al carrito"
         >
           <span class="cart-top-icon" aria-hidden="true">
-            🛍
+            <img src="carrito2.png" alt="">
           </span>
 
-          <span>
-            Carrito
-          </span>
-
-          <strong id="cartCount">
-            0
-          </strong>
+          <span>Carrito</span>
+          <strong id="cartCount">0</strong>
         </button>
-
 
         <button
           type="button"
@@ -118,61 +80,41 @@
         </button>
 
       </div>
-
     </div>
-
   </header>
-
 
   <main>
 
-    <!-- =====================================================
-         PORTADA DE PEDIDOS
-    ====================================================== -->
-
+    <!-- PORTADA DE PEDIDOS -->
     <section class="orders-hero">
 
       <div class="orders-hero-pattern"></div>
 
       <div class="orders-hero-content">
 
-        <div
-          class="orders-hero-waves"
-          aria-hidden="true"
-        >
+        <div class="orders-hero-waves" aria-hidden="true">
           <span></span>
           <span></span>
           <span></span>
         </div>
 
-        <h1>
-          Pedidos online
-        </h1>
+        <h1>Pedidos online</h1>
 
         <p>
           Elige tus favoritos y disfruta Pisco & Mar donde estés
         </p>
 
       </div>
-
     </section>
 
-
-    <!-- =====================================================
-         CONTENIDO PRINCIPAL
-    ====================================================== -->
-
+    <!-- CONTENIDO PRINCIPAL -->
     <section class="orders-main">
 
-      <!-- ===================================================
-           CATEGORÍAS
-      ==================================================== -->
-
+      <!-- CATEGORÍAS -->
       <section
         class="category-panel"
         aria-label="Categorías del menú"
       >
-
         <div class="category-bar">
 
           <button
@@ -181,17 +123,10 @@
             data-filter="todos"
           >
             <span class="category-icon">
-              <img
-                src="todos.png"
-                alt=""
-              >
+              <img src="todos.png" alt="">
             </span>
-
-            <span class="category-name">
-              Todos
-            </span>
+            <span class="category-name">Todos</span>
           </button>
-
 
           <button
             type="button"
@@ -199,17 +134,10 @@
             data-filter="ceviches"
           >
             <span class="category-icon">
-              <img
-                src="ceviches.png"
-                alt=""
-              >
+              <img src="ceviches.png" alt="">
             </span>
-
-            <span class="category-name">
-              Ceviches
-            </span>
+            <span class="category-name">Ceviches</span>
           </button>
-
 
           <button
             type="button"
@@ -217,17 +145,10 @@
             data-filter="entradas"
           >
             <span class="category-icon">
-              <img
-                src="entradas.png"
-                alt=""
-              >
+              <img src="entradas.png" alt="">
             </span>
-
-            <span class="category-name">
-              Entradas
-            </span>
+            <span class="category-name">Entradas</span>
           </button>
-
 
           <button
             type="button"
@@ -235,17 +156,10 @@
             data-filter="fondos"
           >
             <span class="category-icon">
-              <img
-                src="fondos.png"
-                alt=""
-              >
+              <img src="fondos.png" alt="">
             </span>
-
-            <span class="category-name">
-              Fondos
-            </span>
+            <span class="category-name">Fondos</span>
           </button>
-
 
           <button
             type="button"
@@ -253,17 +167,10 @@
             data-filter="arroces"
           >
             <span class="category-icon">
-              <img
-                src="arroces.png"
-                alt=""
-              >
+              <img src="arroces.png" alt="">
             </span>
-
-            <span class="category-name">
-              Arroces
-            </span>
+            <span class="category-name">Arroces</span>
           </button>
-
 
           <button
             type="button"
@@ -271,17 +178,10 @@
             data-filter="carnes"
           >
             <span class="category-icon">
-              <img
-                src="carnes.png"
-                alt=""
-              >
+              <img src="carnes.png" alt="">
             </span>
-
-            <span class="category-name">
-              Carnes
-            </span>
+            <span class="category-name">Carnes</span>
           </button>
-
 
           <button
             type="button"
@@ -289,17 +189,10 @@
             data-filter="postres"
           >
             <span class="category-icon">
-              <img
-                src="postres.png"
-                alt=""
-              >
+              <img src="postres.png" alt="">
             </span>
-
-            <span class="category-name">
-              Postres
-            </span>
+            <span class="category-name">Postres</span>
           </button>
-
 
           <button
             type="button"
@@ -307,56 +200,31 @@
             data-filter="bebidas"
           >
             <span class="category-icon">
-              <img
-                src="bebidas.png"
-                alt=""
-              >
+              <img src="bebidas.png" alt="">
             </span>
-
-            <span class="category-name">
-              Bebidas
-            </span>
+            <span class="category-name">Bebidas</span>
           </button>
 
         </div>
-
       </section>
 
-
-      <!-- ===================================================
-           CATÁLOGO Y CARRITO
-      ==================================================== -->
-
+      <!-- CATÁLOGO Y CARRITO -->
       <div class="orders-layout">
 
-        <!-- =================================================
-             CATÁLOGO
-        ================================================== -->
-
+        <!-- CATÁLOGO -->
         <section class="products-area">
 
           <div class="catalog-heading">
 
             <div>
-              <p class="catalog-kicker">
-                Nuestra carta
-              </p>
-
-              <h2>
-                Elige tus favoritos
-              </h2>
+              <p class="catalog-kicker">Nuestra carta</p>
+              <h2>Elige tus favoritos</h2>
             </div>
-
 
             <div class="search-row">
 
-              <label
-                class="search-box"
-                for="searchInput"
-              >
-                <span aria-hidden="true">
-                  ⌕
-                </span>
+              <label class="search-box" for="searchInput">
+                <span aria-hidden="true">⌕</span>
 
                 <input
                   type="search"
@@ -366,65 +234,40 @@
                 >
               </label>
 
-
               <select
                 id="sortSelect"
                 aria-label="Ordenar productos"
               >
-                <option value="default">
-                  Más vendidos
-                </option>
-
-                <option value="low">
-                  Menor precio
-                </option>
-
-                <option value="high">
-                  Mayor precio
-                </option>
+                <option value="default">Más vendidos</option>
+                <option value="low">Menor precio</option>
+                <option value="high">Mayor precio</option>
               </select>
 
             </div>
-
           </div>
 
-
           <!-- Los productos se cargan desde pedidos.js -->
-
           <div
             class="products-grid"
             id="productsGrid"
           ></div>
 
-
-          <!-- ===============================================
-               COMBOS
-          ================================================ -->
-
+          <!-- COMBOS -->
           <section class="combos-section">
 
             <div class="mini-title">
-
               <span></span>
-
-              <h2>
-                Combos para compartir
-              </h2>
-
+              <h2>Combos para compartir</h2>
               <span></span>
-
             </div>
-
 
             <div class="combos-grid">
 
+              <!-- COMBO MARINO -->
               <article class="combo-card">
 
                 <div class="combo-image">
-                  <img
-                    src="imagen9.png"
-                    alt="Combo Marino"
-                  >
+                  <img src="imagen9.png" alt="Combo Marino">
 
                   <button
                     type="button"
@@ -437,29 +280,22 @@
                 </div>
 
                 <div class="combo-information">
-                  <h3>
-                    Combo Marino
-                  </h3>
+                  <h3>Combo Marino</h3>
 
                   <p>
                     Ceviche, jalea mixta y dos bebidas
                   </p>
 
-                  <strong>
-                    $24.990
-                  </strong>
+                  <strong>$24.990</strong>
                 </div>
 
               </article>
 
-
+              <!-- COMBO FAMILIAR -->
               <article class="combo-card">
 
                 <div class="combo-image">
-                  <img
-                    src="imagen8.png"
-                    alt="Combo Familiar"
-                  >
+                  <img src="imagen8.png" alt="Combo Familiar">
 
                   <button
                     type="button"
@@ -472,29 +308,22 @@
                 </div>
 
                 <div class="combo-information">
-                  <h3>
-                    Combo Familiar
-                  </h3>
+                  <h3>Combo Familiar</h3>
 
                   <p>
                     Dos fondos, dos entradas y dos bebidas
                   </p>
 
-                  <strong>
-                    $34.990
-                  </strong>
+                  <strong>$34.990</strong>
                 </div>
 
               </article>
 
-
+              <!-- COMBO PAREJA -->
               <article class="combo-card">
 
                 <div class="combo-image">
-                  <img
-                    src="imagen10.png"
-                    alt="Combo Pareja"
-                  >
+                  <img src="imagen10.png" alt="Combo Pareja">
 
                   <button
                     type="button"
@@ -507,76 +336,49 @@
                 </div>
 
                 <div class="combo-information">
-                  <h3>
-                    Combo Pareja
-                  </h3>
+                  <h3>Combo Pareja</h3>
 
                   <p>
                     Fondo, entrada y dos pisco sour
                   </p>
 
-                  <strong>
-                    $22.990
-                  </strong>
+                  <strong>$22.990</strong>
                 </div>
 
               </article>
 
             </div>
-
           </section>
 
         </section>
 
-
-        <!-- =================================================
-             CARRITO LATERAL
-        ================================================== -->
-
-        <aside
-          class="cart-panel"
-          id="cartPanel"
-        >
+        <!-- CARRITO LATERAL -->
+        <aside class="cart-panel" id="cartPanel">
 
           <!-- RESUMEN DEL PEDIDO -->
-
           <section class="cart-box">
 
             <div class="cart-heading">
 
               <div>
-                <p>
-                  Resumen
-                </p>
-
-                <h2>
-                  Tu pedido
-                </h2>
+                <p>Resumen</p>
+                <h2>Tu pedido</h2>
               </div>
 
-              <span
-                class="cart-heading-icon"
-                aria-hidden="true"
-              >
-                🛍
+              <!-- ICONO ORIGINAL DEL PEDIDO -->
+              <span class="cart-heading-icon" aria-hidden="true">
+                <img src="pedido.png" alt="">
               </span>
 
             </div>
 
+            <div id="cartItems" class="cart-items">
 
-            <div
-              id="cartItems"
-              class="cart-items"
-            >
               <div class="empty-cart">
 
-                <span aria-hidden="true">
-                  🛒
-                </span>
+                <span aria-hidden="true">🛒</span>
 
-                <h3>
-                  Tu carrito está vacío
-                </h3>
+                <h3>Tu carrito está vacío</h3>
 
                 <p>
                   Agrega tus platos favoritos para comenzar.
@@ -585,61 +387,36 @@
               </div>
             </div>
 
-
             <div class="summary">
 
               <div class="summary-line">
-                <span>
-                  Subtotal
-                </span>
-
-                <strong id="subtotal">
-                  $0
-                </strong>
+                <span>Subtotal</span>
+                <strong id="subtotal">$0</strong>
               </div>
-
 
               <div class="summary-line">
-                <span>
-                  Delivery
-                </span>
-
-                <strong id="delivery">
-                  $0
-                </strong>
+                <span>Delivery</span>
+                <strong id="delivery">$0</strong>
               </div>
 
-
               <div class="summary-line total">
-                <span>
-                  Total
-                </span>
-
-                <strong id="total">
-                  $0
-                </strong>
+                <span>Total</span>
+                <strong id="total">$0</strong>
               </div>
 
             </div>
 
           </section>
 
-
           <!-- INFORMACIÓN DEL CLIENTE -->
-
           <section class="form-box">
 
             <div class="form-heading">
-              <p>
-                Completa tus datos
-              </p>
-
-              <h2>
-                Información del pedido
-              </h2>
+              <p>Completa tus datos</p>
+              <h2>Información del pedido</h2>
             </div>
 
-
+            <!-- NOMBRE -->
             <div class="form-field">
 
               <label for="customerName">
@@ -655,7 +432,7 @@
 
             </div>
 
-
+            <!-- SUCURSAL -->
             <div class="form-field">
 
               <label for="branch">
@@ -687,44 +464,47 @@
 
             </div>
 
-
+            <!-- TIPO DE PEDIDO -->
             <fieldset class="order-type-field">
 
-              <legend>
-                Tipo de pedido
-              </legend>
+              <legend>Tipo de pedido</legend>
 
               <div class="order-type">
 
+                <!-- DELIVERY -->
                 <button
                   type="button"
                   class="active"
                   data-type="Delivery"
                 >
-                  <span aria-hidden="true">
-                    🛵
-                  </span>
+                  <img
+                    src="moto_online.png"
+                    alt=""
+                    class="order-type-icon"
+                  >
 
-                  Delivery
+                  <span>Delivery</span>
                 </button>
 
-
+                <!-- RETIRO -->
                 <button
                   type="button"
                   data-type="Retiro en local"
                 >
-                  <span aria-hidden="true">
-                    🛍
-                  </span>
+                  <img
+                    src="pedido2.png"
+                    alt=""
+                    class="order-type-icon"
+                  >
 
-                  Retiro
+                  <span>Retiro</span>
                 </button>
 
               </div>
 
             </fieldset>
 
-
+            <!-- DIRECCIÓN -->
             <div
               class="form-field"
               id="addressWrap"
@@ -743,7 +523,7 @@
 
             </div>
 
-
+            <!-- COMENTARIOS -->
             <div class="form-field">
 
               <label for="comments">
@@ -758,22 +538,22 @@
 
             </div>
 
-
+            <!-- BOTÓN WHATSAPP -->
             <button
               type="button"
               class="whatsapp-btn"
               id="sendOrder"
             >
               <img
-                src="iconowhattsap.png"
+                src="iconowhattsap2.png"
                 alt=""
               >
 
               <span>
                 Enviar pedido por WhatsApp
               </span>
-            </button>
 
+            </button>
 
             <p class="form-note">
               Te redirigiremos a WhatsApp para confirmar el pedido.
@@ -787,70 +567,46 @@
 
     </section>
 
-
-    <!-- =====================================================
-         BENEFICIOS INFERIORES
-    ====================================================== -->
-
+    <!-- BENEFICIOS INFERIORES -->
     <section class="orders-benefits">
 
+      <!-- PAGO CONTRA ENTREGA -->
       <article>
 
         <div class="orders-benefit-icon">
-          <img
-            src="pagotarjeta.png"
-            alt=""
-          >
+          <img src="pagotarjeta.png" alt="">
         </div>
 
         <div>
-          <h3>
-            Pago contra entrega
-          </h3>
-
-          <p>
-            Paga cuando recibas tu pedido.
-          </p>
+          <h3>Pago contra entrega</h3>
+          <p>Paga cuando recibas tu pedido.</p>
         </div>
 
       </article>
 
-
+      <!-- ENTREGAS RÁPIDAS -->
       <article>
 
         <div class="orders-benefit-icon">
-          <img
-            src="entregas.png"
-            alt=""
-          >
+          <img src="entregas.png" alt="">
         </div>
 
         <div>
-          <h3>
-            Entregas rápidas
-          </h3>
-
-          <p>
-            En Copiapó y Bahía Inglesa.
-          </p>
+          <h3>Entregas rápidas</h3>
+          <p>En Copiapó y Bahía Inglesa.</p>
         </div>
 
       </article>
 
-
+      <!-- PRODUCTOS FRESCOS -->
       <article>
 
         <div class="orders-benefit-icon">
-          <img
-            src="productosfrescos.png"
-            alt=""
-          >
+          <img src="productosfrescos.png" alt="">
         </div>
 
         <div>
-          <h3>
-            Productos frescos
-          </h3>
+          <h3>Productos frescos</h3>
 
           <p>
             Seleccionados cuidadosamente cada día.
@@ -859,20 +615,15 @@
 
       </article>
 
-
+      <!-- ATENCIÓN PERSONALIZADA -->
       <article>
 
         <div class="orders-benefit-icon whatsapp-support-icon">
-          <img
-            src="iconowhattsap.png"
-            alt=""
-          >
+          <img src="iconowhattsap2.png" alt="">
         </div>
 
         <div>
-          <h3>
-            Atención personalizada
-          </h3>
+          <h3>Atención personalizada</h3>
 
           <p>
             Escríbenos y te ayudamos con tu pedido.
@@ -885,11 +636,7 @@
 
   </main>
 
-
-  <!-- =====================================================
-       WHATSAPP FLOTANTE
-  ====================================================== -->
-
+  <!-- WHATSAPP FLOTANTE -->
   <a
     href="https://wa.me/56956783197?text=Hola%20Pisco%20%26%20Mar%2C%20quiero%20hacer%20una%20consulta."
     target="_blank"
@@ -897,14 +644,12 @@
     class="floating-whatsapp"
     aria-label="Contactar por WhatsApp"
   >
-    <img
-      src="iconowhattsap.png"
-      alt=""
-    >
+    <img src="iconowhattsap.png" alt="">
   </a>
 
-
+  <!-- JAVASCRIPT -->
   <script src="pedidos.js"></script>
 
 </body>
 </html>
+
