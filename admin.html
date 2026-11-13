@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Administración | Pisco & Mar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <!-- INICIO DE SESIÓN -->
+  <main id="loginScreen" class="login-screen">
+
+    <section class="login-card">
+
+      <img
+        src="logo2.png"
+        alt="Pisco & Mar"
+        class="login-logo"
+      >
+
+      <h1>Panel de administración</h1>
+
+      <p>
+        Ingresa con tu cuenta autorizada para
+        administrar Pisco & Mar.
+      </p>
+
+      <form id="loginForm">
+
+        <label for="loginEmail">Correo electrónico</label>
+        <input
+          type="email"
+          id="loginEmail"
+          autocomplete="username"
+          required
+        >
+
+        <label for="loginPassword">Contraseña</label>
+        <input
+          type="password"
+          id="loginPassword"
+          autocomplete="current-password"
+          required
+        >
+
+        <button type="submit" id="loginButton">
+          Iniciar sesión
+        </button>
+
+        <p id="loginMessage" role="status"></p>
+
+      </form>
+
+      <button
+        type="button"
+        id="forgotPasswordButton"
+        class="text-button"
+      >
+        ¿Olvidaste tu contraseña?
+      </button>
+
+      <a href="index.html" class="back-link">
+        Volver a la página principal
+      </a>
+
+    </section>
+
+  </main>
+
+  <!-- PANEL DE ADMINISTRACIÓN -->
+  <div id="adminPanel" class="admin-panel" hidden>
+
+    <aside class="admin-sidebar">
+
+      <div class="sidebar-brand">
+        <img src="logo.png" alt="Pisco & Mar">
+        <p>Administración</p>
+      </div>
+
+      <nav class="admin-navigation" aria-label="Administración">
+
+        <button type="button" data-section="products">
+          Productos y precios
+        </button>
+
+        <button type="button" data-section="promotions">
+          Promociones
+        </button>
+
+        <button type="button" data-section="account">
+          Mi cuenta
+        </button>
+
+      </nav>
+
+      <button type="button" id="logoutButton">
+        Cerrar sesión
+      </button>
+
+    </aside>
+
+    <main class="admin-content">
+
+      <header class="admin-header">
+        <div>
+          <p>Bienvenido a</p>
+          <h1>Pisco & Mar</h1>
+        </div>
+
+        <span id="adminEmail"></span>
+      </header>
+
+      <!-- PRODUCTOS -->
+      <section id="productsSection" class="admin-section">
+
+        <div class="section-heading">
+  <div>
+    <h2>Productos y precios</h2>
+    <p>Agrega platos y actualiza fotografías y precios de la carta.</p>
+  </div>
+
+    <button type="button" id="addProductButton">
+    + Agregar plato
+  </button>
+</div>
+
+<!-- LISTADO DE PRODUCTOS EXISTENTES -->
+<div id="adminProductsGrid" class="admin-products-grid">
+</div>
+
+</section>
+
+<!-- PROMOCIONES -->
+<section id="promotionsSection" class="admin-section" hidden>
+
+
+<!-- ADMINISTRACIÓN DEL BANNER DE INICIO -->
+<div class="home-banner-admin">
+
+  <div class="section-heading">
+    <div>
+      <h2>Banner de Inicio</h2>
+      <p>
+        Personaliza la promoción que aparece en
+        la página principal del restaurante.
+      </p>
+    </div>
+  </div>
+
+  <form id="homeBannerForm">
+
+    <label for="bannerLabel">Etiqueta</label>
+    <input
+      type="text"
+      id="bannerLabel"
+      maxlength="80"
+      placeholder="Ej.: Promo"
+      required
+    >
+
+    <label for="bannerTitle">Título principal</label>
+    <input
+      type="text"
+      id="bannerTitle"
+      maxlength="120"
+      placeholder="Ej.: Pedidos online"
+      required
+    >
+
+    <label for="bannerDiscount">Texto destacado</label>
+    <input
+      type="text"
+      id="bannerDiscount"
+      maxlength="80"
+      placeholder="Ej.: 15% OFF"
+      required
+    >
+
+    <label for="bannerDescription">Descripción</label>
+    <textarea
+      id="bannerDescription"
+      rows="3"
+      maxlength="500"
+      placeholder="Describe la promoción..."
+    ></textarea>
+
+    <label for="bannerImage">Cambiar imagen de fondo</label>
+    <input
+      type="file"
+      id="bannerImage"
+      accept="image/jpeg,image/png,image/webp"
+    >
+
+    <p>
+      Si no seleccionas una imagen nueva,
+      se conservará la actual.
+    </p>
+
+    <label for="bannerActive">Estado del banner</label>
+    <select id="bannerActive">
+      <option value="true">Activo</option>
+      <option value="false">Inactivo</option>
+    </select>
+
+    <div class="dialog-actions">
+      <button type="submit" id="saveBannerButton">
+        Guardar cambios del banner
+      </button>
+    </div>
+
+    <p id="bannerMessage" role="status"></p>
+
+  </form>
+
+</div>
+
+<hr style="margin: 35px 0;">
+
+
+  <div class="section-heading">
+    <div>
+      <h2>Promociones</h2>
+      <p>
+        Crea, edita, activa o desactiva las promociones
+        del restaurante.
+      </p>
+    </div>
+
+    <button type="button" id="addPromotionButton">
+      + Agregar promoción
+    </button>
+  </div>
+
+  <div id="adminPromotions" class="admin-products-grid">
+  </div>
+
+</section>
+
+      <!-- MI CUENTA -->
+      <section id="accountSection" class="admin-section" hidden>
+
+        <h2>Mi cuenta</h2>
+
+        <p>
+          Cambia la contraseña de tu cuenta de administración.
+        </p>
+
+        <form id="changePasswordForm">
+
+          <label for="newPassword">Nueva contraseña</label>
+          <input
+            type="password"
+            id="newPassword"
+            autocomplete="new-password"
+            minlength="12"
+            required
+          >
+
+          <label for="confirmPassword">Confirmar contraseña</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            autocomplete="new-password"
+            minlength="12"
+            required
+          >
+
+          <button type="submit">
+            Cambiar contraseña
+          </button>
+
+          <p id="passwordMessage" role="status"></p>
+
+        </form>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- EDITAR PRODUCTO -->
+  <dialog id="productDialog" class="product-dialog">
+
+    <form id="editProductForm">
+
+      <h2>Editar producto</h2>
+
+      <input type="hidden" id="editProductId">
+
+      <label for="editProductName">Producto</label>
+      <input id="editProductName" type="text" readonly>
+
+      <label for="editProductPrice">Precio (CLP)</label>
+      <input
+        id="editProductPrice"
+        type="number"
+        min="0"
+        step="1"
+        required
+      >
+
+      <label for="editProductImage">Nueva fotografía</label>
+      <input
+        id="editProductImage"
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+      >
+
+      <img
+        id="editProductPreview"
+        alt="Vista previa del producto"
+      >
+
+      <div class="dialog-actions">
+
+        <button type="button" id="cancelEditButton">
+          Cancelar
+        </button>
+
+        <button type="submit" id="saveProductButton">
+          Guardar cambios
+        </button>
+
+      </div>
+
+      <p id="editProductMessage" role="status"></p>
+
+    </form>
+
+  </dialog>
+
+<!-- AGREGAR NUEVO PLATO -->
+<dialog id="addProductDialog" class="product-dialog">
+
+  <form id="addProductForm">
+
+    <h2>Agregar nuevo plato</h2>
+
+    <label for="newProductName">Nombre del plato</label>
+    <input
+      id="newProductName"
+      type="text"
+      maxlength="120"
+      required
+    >
+
+    <label for="newProductCategory">Categoría</label>
+    <select id="newProductCategory" required>
+      <option value="">Seleccionar categoría</option>
+      <option value="ceviches">Ceviches</option>
+      <option value="entradas">Entradas</option>
+      <option value="fondos">Fondos</option>
+      <option value="arroces">Arroces</option>
+      <option value="carnes">Carnes</option>
+      <option value="postres">Postres</option>
+      <option value="bebidas">Bebidas</option>
+      <option value="combo">Combos</option>
+    </select>
+
+    <label for="newProductPrice">Precio (CLP)</label>
+    <input
+      id="newProductPrice"
+      type="number"
+      min="0"
+      step="1"
+      required
+    >
+
+    <label for="newProductDescription">Descripción</label>
+    <textarea
+      id="newProductDescription"
+      rows="3"
+      maxlength="500"
+    ></textarea>
+
+    <label for="newProductImage">Fotografía del plato</label>
+    <input
+      id="newProductImage"
+      type="file"
+      accept="image/jpeg,image/png,image/webp"
+      required
+    >
+
+    <div class="dialog-actions">
+      <button type="button" id="cancelAddProductButton">
+        Cancelar
+      </button>
+
+      <button type="submit" id="saveNewProductButton">
+        Guardar plato
+      </button>
+    </div>
+
+    <p id="addProductMessage" role="status"></p>
+
+  </form>
+
+</dialog>
+
+<!-- AGREGAR Y EDITAR PROMOCIÓN -->
+<dialog id="promotionDialog" class="product-dialog">
+
+  <form id="promotionForm">
+
+    <h2 id="promotionDialogTitle">
+      Nueva promoción
+    </h2>
+
+    <input type="hidden" id="promotionId">
+
+    <label for="promotionName">
+      Nombre de la promoción
+    </label>
+    <input
+      type="text"
+      id="promotionName"
+      maxlength="120"
+      required
+    >
+
+    <label for="promotionDescription">
+      Descripción
+    </label>
+    <textarea
+      id="promotionDescription"
+      rows="3"
+      maxlength="500"
+    ></textarea>
+
+    <label for="promotionPrice">
+      Precio promocional (CLP)
+    </label>
+    <input
+      type="number"
+      id="promotionPrice"
+      min="0"
+      step="1"
+      required
+    >
+
+    <label for="promotionImage">
+      Fotografía de la promoción
+    </label>
+    <input
+      type="file"
+      id="promotionImage"
+      accept="image/jpeg,image/png,image/webp"
+    >
+
+    <label for="promotionActive">
+      Estado de la promoción
+    </label>
+    <select id="promotionActive">
+      <option value="true">Activa</option>
+      <option value="false">Inactiva</option>
+    </select>
+
+    <div class="dialog-actions">
+
+      <button
+        type="button"
+        id="cancelPromotionButton"
+      >
+        Cancelar
+      </button>
+
+      <button
+        type="submit"
+        id="savePromotionButton"
+      >
+        Guardar promoción
+      </button>
+
+    </div>
+
+    <p id="promotionMessage" role="status"></p>
+
+  </form>
+
+</dialog>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <!-- ADMINISTRADOR -->
+  <script src="admin.js"></script>
+
+</body>
+</html>

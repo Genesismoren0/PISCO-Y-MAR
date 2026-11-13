@@ -1,9 +1,9 @@
 
 "use strict";
 
-/* =========================================================
-   CONFIGURACIÓN
-========================================================= */
+/* =========================================
+   PISCO & MAR - PEDIDOS ONLINE
+========================================= */
 
 const whatsappNumber = "56956783197";
 
@@ -24,140 +24,21 @@ const BANK_DETAILS = {
   email: "Restaurantpiscoymar@gmail.com"
 };
 
+const pedidosSupabase = window.supabase.createClient(
+  "https://saocimccnddfgvsiupug.supabase.co",
+  "sb_publishable_71lznW6L4LSDESduHfFtaA_4vBxqGUe"
+);
+
+let products = [];
+let promotions = [];
 let cart = [];
 let currentCategory = "todos";
 let orderType = "Delivery";
+let catalogoDisponible = false;
 
-/* =========================================================
-   PRODUCTOS ORIGINALES
-========================================================= */
-
-const products = [
-  {
-    id: 1,
-    name: "Ceviche Clásico",
-    category: "ceviches",
-    price: 12990,
-    image: "imagen6.png",
-    description: "Pescado fresco, leche de tigre, cebolla morada y camote."
-  },
-  {
-    id: 2,
-    name: "Pulpo a la Parrilla",
-    category: "fondos",
-    price: 15990,
-    image: "imagen1.png",
-    description: "Pulpo grillado acompañado de papas doradas."
-  },
-  {
-    id: 3,
-    name: "Arroz con Mariscos",
-    category: "arroces",
-    price: 13990,
-    image: "imagen5.png",
-    description: "Arroz cremoso con una selección de mariscos."
-  },
-  {
-    id: 4,
-    name: "Lomo Saltado",
-    category: "carnes",
-    price: 11990,
-    image: "imagen2.png",
-    description: "Carne salteada con cebolla, tomate y papas fritas."
-  },
-  {
-    id: 5,
-    name: "Ceviche Mixto",
-    category: "ceviches",
-    price: 14990,
-    image: "imagen10.png",
-    description: "Pescado fresco y mariscos marinados en leche de tigre."
-  },
-  {
-    id: 6,
-    name: "Arroz Chaufa",
-    category: "arroces",
-    price: 11990,
-    image: "imagen14.png",
-    description: "Arroz salteado al wok con sazón peruana."
-  },
-  {
-    id: 7,
-    name: "Tiradito de Atún",
-    category: "entradas",
-    price: 13990,
-    image: "imagen11.png",
-    description: "Láminas de atún fresco con salsa especial de la casa."
-  },
-  {
-    id: 8,
-    name: "Tallarín Saltado",
-    category: "fondos",
-    price: 12990,
-    image: "imagen7.png",
-    description: "Tallarines salteados al wok con verduras y sazón peruana."
-  },
-  {
-    id: 9,
-    name: "Jalea Mixta",
-    category: "entradas",
-    price: 13990,
-    image: "imagen8.png",
-    description: "Pescados y mariscos crocantes acompañados de salsa criolla."
-  },
-  {
-    id: 10,
-    name: "Suspiro Limeño",
-    category: "postres",
-    price: 5990,
-    image: "imagen15.png",
-    description: "Postre tradicional peruano con merengue suave."
-  },
-  {
-    id: 11,
-    name: "Pisco Sour",
-    category: "bebidas",
-    price: 5990,
-    image: "imagen16.png",
-    description: "Pisco sour preparado al estilo clásico peruano."
-  },
-  {
-    id: 12,
-    name: "Ají de Gallina",
-    category: "fondos",
-    price: 11990,
-    image: "imagen12.png",
-    description: "Pollo desmenuzado en una cremosa salsa de ají amarillo."
-  },
-  {
-    id: 101,
-    name: "Combo Marino",
-    category: "combo",
-    price: 24990,
-    image: "imagen9.png",
-    description: "Ceviche, jalea mixta y dos bebidas."
-  },
-  {
-    id: 102,
-    name: "Combo Familiar",
-    category: "combo",
-    price: 34990,
-    image: "imagen8.png",
-    description: "Dos fondos, dos entradas y dos bebidas."
-  },
-  {
-    id: 103,
-    name: "Combo Pareja",
-    category: "combo",
-    price: 22990,
-    image: "imagen10.png",
-    description: "Un fondo, una entrada y dos pisco sour."
-  }
-];
-
-/* =========================================================
+/* =========================================
    ELEMENTOS DEL HTML
-========================================================= */
+========================================= */
 
 const productsGrid = document.getElementById("productsGrid");
 const cartItems = document.getElementById("cartItems");
@@ -188,9 +69,9 @@ const ordersMenuButton =
 const ordersNav =
   document.getElementById("ordersNav");
 
-/* =========================================================
+/* =========================================
    FUNCIONES GENERALES
-========================================================= */
+========================================= */
 
 function formatPrice(price) {
   return new Intl.NumberFormat("es-CL", {
@@ -200,23 +81,8 @@ function formatPrice(price) {
   }).format(price);
 }
 
-function getCategoryName(category) {
-  const categoryNames = {
-    ceviches: "Ceviches",
-    entradas: "Entradas",
-    fondos: "Fondos",
-    arroces: "Arroces",
-    carnes: "Carnes",
-    postres: "Postres",
-    bebidas: "Bebidas",
-    combo: "Combo"
-  };
-
-  return categoryNames[category] || category;
-}
-
 function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, character => {
+  return String(value ?? "").replace(/[&<>"']/g, character => {
     const entities = {
       "&": "&amp;",
       "<": "&lt;",
@@ -229,16 +95,26 @@ function escapeHTML(value) {
   });
 }
 
+function getCategoryName(category) {
+  const names = {
+    ceviches: "Ceviches",
+    entradas: "Entradas",
+    fondos: "Fondos",
+    arroces: "Arroces",
+    carnes: "Carnes",
+    postres: "Postres",
+    bebidas: "Bebidas",
+    combo: "Combo"
+  };
+
+  return names[category] || category;
+}
+
 function getBranchKey() {
-  const selectedBranch = branch?.value || "";
+  const selected = branch?.value || "";
 
-  if (selectedBranch.includes("Copiapó")) {
-    return "copiapo";
-  }
-
-  if (selectedBranch.includes("Bahía Inglesa")) {
-    return "bahia";
-  }
+  if (selected.includes("Copiapó")) return "copiapo";
+  if (selected.includes("Bahía Inglesa")) return "bahia";
 
   return "";
 }
@@ -248,66 +124,226 @@ function getDeliveryPrice() {
     return 0;
   }
 
-  const branchKey = getBranchKey();
-
-  return DELIVERY_PRICES[branchKey] || 0;
+  return DELIVERY_PRICES[getBranchKey()] || 0;
 }
 
-/* =========================================================
-   REFERENCIA DEL PEDIDO
-========================================================= */
+function getCartKey(item) {
+  return item.isPromotion
+    ? `promotion-${item.id}`
+    : `product-${item.id}`;
+}
 
-function generateOrderReference() {
-  const now = new Date();
+function findCartItem(key) {
+  return cart.find(item => getCartKey(item) === key);
+}
 
-  const datePart = [
-    now.getFullYear(),
-    String(now.getMonth() + 1).padStart(2, "0"),
-    String(now.getDate()).padStart(2, "0")
-  ].join("");
+/* =========================================
+   CONEXIÓN CON SUPABASE
+========================================= */
 
-  let randomPart;
+async function sincronizarProductos() {
+  // Ambos catálogos deben cargarse correctamente.
+  // Si falla uno, no se permiten pedidos con precios
+  // que podrían estar desactualizados.
 
-  if (window.crypto?.getRandomValues) {
-    const values = new Uint32Array(1);
-    window.crypto.getRandomValues(values);
+  const [productosResultado, promocionesResultado] =
+    await Promise.all([
+      pedidosSupabase
+        .from("products")
+        .select("id, name, category, price, image, description")
+        .order("id", { ascending: true }),
 
-    randomPart = values[0]
-      .toString(36)
-      .toUpperCase()
-      .padStart(7, "0")
-      .slice(-7);
-  } else {
-    randomPart = Math.random()
-      .toString(36)
-      .slice(2, 9)
-      .toUpperCase();
+      pedidosSupabase
+        .from("promotions")
+        .select("id, name, description, price, image, active")
+        .eq("active", true)
+        .order("id", { ascending: true })
+    ]);
+
+  if (productosResultado.error) {
+    throw productosResultado.error;
   }
 
-  return `PM-${datePart}-${randomPart}`;
+  if (promocionesResultado.error) {
+    throw promocionesResultado.error;
+  }
+
+  const nuevosProductos = (productosResultado.data || [])
+    .map(item => ({
+      ...item,
+      id: Number(item.id),
+      price: Number(item.price),
+      isPromotion: false
+    }));
+
+  const nuevasPromociones = (promocionesResultado.data || [])
+    .map(item => ({
+      ...item,
+      id: Number(item.id),
+      price: Number(item.price),
+      category: "promociones",
+      isPromotion: true
+    }));
+
+  const todos = [...nuevosProductos, ...nuevasPromociones];
+
+  if (nuevosProductos.length === 0) {
+    throw new Error("La carta no tiene productos disponibles.");
+  }
+
+  if (todos.some(item =>
+    !Number.isSafeInteger(item.id) ||
+    !Number.isSafeInteger(item.price) ||
+    item.price < 0
+  )) {
+    throw new Error("Hay datos o precios inválidos en la carta.");
+  }
+
+  products = nuevosProductos;
+  promotions = nuevasPromociones;
+  catalogoDisponible = true;
+
+  // Actualizar los productos del carrito con los
+  // precios y estados actuales de Supabase.
+  cart = cart.map(item => {
+    const actualizado = todos.find(producto =>
+      getCartKey(producto) === getCartKey(item)
+    );
+
+    if (!actualizado) return null;
+
+    return {
+      ...actualizado,
+      quantity: item.quantity,
+      notes: item.notes || ""
+    };
+  }).filter(Boolean);
+
+  renderProducts();
+  renderPromotions();
+  renderCart();
 }
 
-/*
-  La referencia se genera localmente.
-  No garantiza unicidad global sin una base de datos.
-*/
+/* =========================================
+   SECCIÓN DE PROMOCIONES
+========================================= */
 
-/* =========================================================
-   RENDERIZADO DE PRODUCTOS
-========================================================= */
+function obtenerContenedorPromociones() {
+  let section = document.getElementById("webPromotionsSection");
 
-function renderProducts() {
-  if (!productsGrid) {
+  if (!section && productsGrid) {
+    section = document.createElement("section");
+    section.id = "webPromotionsSection";
+    section.className = "web-promotions-section";
+
+    section.style.marginBottom = "36px";
+
+    const heading = document.createElement("div");
+    heading.className = "section-heading";
+
+    const title = document.createElement("h2");
+    title.textContent = "Promociones especiales";
+    title.style.marginBottom = "8px";
+
+    const description = document.createElement("p");
+    description.textContent =
+      "Aprovecha nuestras promociones exclusivas.";
+
+    heading.append(title, description);
+
+    const grid = document.createElement("div");
+    grid.id = "webPromotionsGrid";
+    grid.className = "products-grid";
+
+    // Diseño adaptable sin modificar pedidos.css.
+    grid.style.display = "grid";
+    grid.style.gridTemplateColumns =
+      "repeat(auto-fill, minmax(min(100%, 240px), 1fr))";
+    grid.style.gap = "20px";
+    grid.style.marginTop = "20px";
+
+    section.append(heading, grid);
+
+    productsGrid.parentNode.insertBefore(section, productsGrid);
+  }
+
+  return section;
+}
+
+function renderPromotions() {
+  const section = obtenerContenedorPromociones();
+
+  if (!section) return;
+
+  const grid = document.getElementById("webPromotionsGrid");
+
+  if (promotions.length === 0) {
+    section.hidden = true;
     return;
   }
 
+  section.hidden = false;
+
+  grid.innerHTML = promotions.map(item => `
+    <article class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="${escapeHTML(item.image)}"
+          alt="${escapeHTML(item.name)}"
+          loading="lazy"
+        >
+
+        <button
+          type="button"
+          class="add-promotion"
+          data-promotion-id="${item.id}"
+          aria-label="Agregar ${escapeHTML(item.name)} al carrito"
+        >
+          +
+        </button>
+
+      </div>
+
+      <div class="product-info">
+
+        <span class="product-category">
+          Promoción especial
+        </span>
+
+        <h3>${escapeHTML(item.name)}</h3>
+
+        <p>${escapeHTML(item.description)}</p>
+
+        <span class="product-price">
+          ${formatPrice(item.price)}
+        </span>
+
+        <p style="font-size:12px; margin-top:8px;">
+          Precio promocional. No acumula descuento web.
+        </p>
+
+      </div>
+
+    </article>
+  `).join("");
+}
+
+/* =========================================
+   RENDERIZAR PRODUCTOS
+========================================= */
+
+function renderProducts() {
+  if (!productsGrid) return;
+
   let filteredProducts = products.filter(
-    product => product.category !== "combo"
+    item => item.category !== "combo"
   );
 
   if (currentCategory !== "todos") {
     filteredProducts = filteredProducts.filter(
-      product => product.category === currentCategory
+      item => item.category === currentCategory
     );
   }
 
@@ -315,14 +351,14 @@ function renderProducts() {
     searchInput?.value.trim().toLowerCase() || "";
 
   if (searchTerm) {
-    filteredProducts = filteredProducts.filter(product => {
-      const searchableText = [
-        product.name,
-        product.category,
-        product.description
+    filteredProducts = filteredProducts.filter(item => {
+      const searchable = [
+        item.name,
+        item.category,
+        item.description
       ].join(" ").toLowerCase();
 
-      return searchableText.includes(searchTerm);
+      return searchable.includes(searchTerm);
     });
   }
 
@@ -343,76 +379,80 @@ function renderProducts() {
         <p>Prueba con otra categoría o búsqueda.</p>
       </div>
     `;
-
     return;
   }
 
-  productsGrid.innerHTML = filteredProducts
-    .map(product => `
-      <article class="product-card">
+  productsGrid.innerHTML = filteredProducts.map(item => `
+    <article class="product-card">
 
-        <div class="product-image">
+      <div class="product-image">
 
-          <img
-            src="${escapeHTML(product.image)}"
-            alt="${escapeHTML(product.name)}"
-            loading="lazy"
-          >
+        <img
+          src="${escapeHTML(item.image)}"
+          alt="${escapeHTML(item.name)}"
+          loading="lazy"
+        >
 
-          <button
-            type="button"
-            class="add-product"
-            data-product-id="${product.id}"
-            aria-label="Agregar ${escapeHTML(product.name)} al carrito"
-          >
-            +
-          </button>
+        <button
+          type="button"
+          class="add-product"
+          data-product-id="${item.id}"
+          aria-label="Agregar ${escapeHTML(item.name)} al carrito"
+        >
+          +
+        </button>
 
-        </div>
+      </div>
 
-        <div class="product-info">
+      <div class="product-info">
 
-          <span class="product-category">
-            ${escapeHTML(getCategoryName(product.category))}
-          </span>
+        <span class="product-category">
+          ${escapeHTML(getCategoryName(item.category))}
+        </span>
 
-          <h3>${escapeHTML(product.name)}</h3>
+        <h3>${escapeHTML(item.name)}</h3>
 
-          <p>${escapeHTML(product.description)}</p>
+        <p>${escapeHTML(item.description)}</p>
 
-          <span class="product-price">
-            ${formatPrice(product.price)}
-          </span>
+        <span class="product-price">
+          ${formatPrice(item.price)}
+        </span>
 
-        </div>
+      </div>
 
-      </article>
-    `)
-    .join("");
+    </article>
+  `).join("");
 }
 
-/* =========================================================
-   CARRITO
-========================================================= */
+/* =========================================
+   ADMINISTRACIÓN DEL CARRITO
+========================================= */
 
-function addToCart(productId) {
-  const product = products.find(
-    item => item.id === Number(productId)
-  );
-
-  if (!product) {
+function addToCart(id, isPromotion = false) {
+  if (!catalogoDisponible) {
+    alert("Estamos actualizando la carta. Intenta nuevamente.");
     return;
   }
 
-  const existingItem = cart.find(
-    item => item.id === product.id
+  const catalogo = isPromotion ? promotions : products;
+
+  const producto = catalogo.find(
+    item => item.id === Number(id)
   );
 
-  if (existingItem) {
-    existingItem.quantity += 1;
+  if (!producto) {
+    alert("Este producto ya no está disponible.");
+    return;
+  }
+
+  const key = getCartKey(producto);
+  const existente = findCartItem(key);
+
+  if (existente) {
+    existente.quantity += 1;
   } else {
     cart.push({
-      ...product,
+      ...producto,
       quantity: 1,
       notes: ""
     });
@@ -421,74 +461,72 @@ function addToCart(productId) {
   renderCart();
 }
 
-function increaseQuantity(productId) {
-  const item = cart.find(
-    product => product.id === Number(productId)
-  );
+function increaseQuantity(key) {
+  const item = findCartItem(key);
 
-  if (!item) {
-    return;
-  }
+  if (!item) return;
 
   item.quantity += 1;
   renderCart();
 }
 
-function decreaseQuantity(productId) {
-  const item = cart.find(
-    product => product.id === Number(productId)
-  );
+function decreaseQuantity(key) {
+  const item = findCartItem(key);
 
-  if (!item) {
-    return;
-  }
+  if (!item) return;
 
   item.quantity -= 1;
 
   if (item.quantity <= 0) {
     cart = cart.filter(
-      product => product.id !== item.id
+      producto => getCartKey(producto) !== key
     );
   }
 
   renderCart();
 }
 
-function removeFromCart(productId) {
+function removeFromCart(key) {
   cart = cart.filter(
-    product => product.id !== Number(productId)
+    item => getCartKey(item) !== key
   );
 
   renderCart();
 }
 
-function updateItemNotes(productId, notes) {
-  const item = cart.find(
-    product => product.id === Number(productId)
-  );
+function updateItemNotes(key, notes) {
+  const item = findCartItem(key);
 
   if (item) {
     item.notes = notes;
   }
 }
 
-/* =========================================================
+/* =========================================
    CÁLCULO DEL PEDIDO
-========================================================= */
+========================================= */
 
 function calculateOrder() {
   const subtotal = cart.reduce((sum, item) => {
     return sum + item.price * item.quantity;
   }, 0);
 
+  // Solo platos normales y combos reciben el 15%.
+  // Las promociones NO reciben descuento adicional.
+  const subtotalDescontable = cart.reduce((sum, item) => {
+    if (item.isPromotion === true) {
+      return sum;
+    }
+
+    return sum + item.price * item.quantity;
+  }, 0);
+
   const discount = Math.round(
-    subtotal * WEB_DISCOUNT
+    subtotalDescontable * WEB_DISCOUNT
   );
 
   const discountedSubtotal = subtotal - discount;
-
   const delivery = getDeliveryPrice();
-
   const total = discountedSubtotal + delivery;
 
   const deposit = Math.round(
@@ -508,108 +546,102 @@ function calculateOrder() {
   };
 }
 
-/* =========================================================
-   RENDERIZADO DEL CARRITO
-========================================================= */
+/* =========================================
+   MOSTRAR CARRITO
+========================================= */
 
 function renderCart() {
-  if (!cartItems || !cartCount) {
-    return;
-  }
+  if (!cartItems || !cartCount) return;
 
-  const quantity = cart.reduce((sum, item) => {
-    return sum + item.quantity;
-  }, 0);
+  const quantity = cart.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
 
   if (cart.length === 0) {
     cartItems.innerHTML = `
       <div class="empty-cart">
-
         <span aria-hidden="true">🛒</span>
-
         <h3>Tu carrito está vacío</h3>
-
-        <p>
-          Agrega tus platos favoritos para comenzar.
-        </p>
-
+        <p>Agrega tus platos favoritos para comenzar.</p>
       </div>
     `;
   } else {
-    cartItems.innerHTML = cart
-      .map(item => {
-        const itemTotal = item.price * item.quantity;
+    cartItems.innerHTML = cart.map(item => {
+      const key = getCartKey(item);
+      const totalItem = item.price * item.quantity;
 
-        return `
-          <article class="cart-item">
+      return `
+        <article class="cart-item">
 
-            <div>
+          <div>
 
-              <h4>${escapeHTML(item.name)}</h4>
+            <h4>${escapeHTML(item.name)}</h4>
 
-              <small>
-                ${formatPrice(item.price)} cada uno
+            ${item.isPromotion ? `
+              <small style="display:block;">
+                Promoción: sin descuento web adicional
               </small>
+            ` : ""}
 
-              <div class="cart-controls">
+            <small>
+              ${formatPrice(item.price)} cada uno
+            </small>
 
-                <button
-                  type="button"
-                  data-action="decrease"
-                  data-product-id="${item.id}"
-                  aria-label="Disminuir cantidad"
-                >
-                  −
-                </button>
-
-                <span>${item.quantity}</span>
-
-                <button
-                  type="button"
-                  data-action="increase"
-                  data-product-id="${item.id}"
-                  aria-label="Aumentar cantidad"
-                >
-                  +
-                </button>
-
-              </div>
-
-              <label
-                class="cart-item-notes-label"
-                for="notes-${item.id}"
-              >
-                Indicaciones para este producto
-              </label>
-
-              <textarea
-                class="cart-item-notes"
-                id="notes-${item.id}"
-                data-notes-product-id="${item.id}"
-                rows="2"
-                maxlength="500"
-                placeholder="Ej.: sin cebolla, poco picante..."
-              >${escapeHTML(item.notes || "")}</textarea>
+            <div class="cart-controls">
 
               <button
                 type="button"
-                class="remove-item"
-                data-action="remove"
-                data-product-id="${item.id}"
-              >
-                Eliminar
-              </button>
+                data-action="decrease"
+                data-cart-key="${key}"
+                aria-label="Disminuir cantidad"
+              >−</button>
+
+              <span>${item.quantity}</span>
+
+              <button
+                type="button"
+                data-action="increase"
+                data-cart-key="${key}"
+                aria-label="Aumentar cantidad"
+              >+</button>
 
             </div>
 
-            <strong class="cart-item-total">
-              ${formatPrice(itemTotal)}
-            </strong>
+            <label
+              class="cart-item-notes-label"
+              for="notes-${key}"
+            >
+              Indicaciones para este producto
+            </label>
 
-          </article>
-        `;
-      })
-      .join("");
+            <textarea
+              class="cart-item-notes"
+              id="notes-${key}"
+              data-notes-cart-key="${key}"
+              rows="2"
+              maxlength="500"
+              placeholder="Ej.: sin cebolla, poco picante..."
+            >${escapeHTML(item.notes || "")}</textarea>
+
+            <button
+              type="button"
+              class="remove-item"
+              data-action="remove"
+              data-cart-key="${key}"
+            >
+              Eliminar
+            </button>
+
+          </div>
+
+          <strong class="cart-item-total">
+            ${formatPrice(totalItem)}
+          </strong>
+
+        </article>
+      `;
+    }).join("");
   }
 
   const totals = calculateOrder();
@@ -642,16 +674,13 @@ function renderCart() {
   }
 }
 
-/* =========================================================
+/* =========================================
    TIPO DE PEDIDO
-========================================================= */
+========================================= */
 
 function updateOrderType(selectedButton) {
-  document
-    .querySelectorAll(".order-type button")
-    .forEach(button => {
-      button.classList.remove("active");
-    });
+  document.querySelectorAll(".order-type button")
+    .forEach(button => button.classList.remove("active"));
 
   selectedButton.classList.add("active");
 
@@ -671,11 +700,16 @@ function updateOrderType(selectedButton) {
   renderCart();
 }
 
-/* =========================================================
-   VALIDACIÓN DEL PEDIDO
-========================================================= */
+/* =========================================
+   VALIDAR PEDIDO
+========================================= */
 
 function validateOrder() {
+  if (!catalogoDisponible) {
+    alert("No se pudo actualizar la carta. Intenta nuevamente.");
+    return false;
+  }
+
   if (cart.length === 0) {
     alert("Agrega al menos un producto al carrito.");
     return false;
@@ -687,13 +721,7 @@ function validateOrder() {
     return false;
   }
 
-  if (!branch?.value) {
-    alert("Selecciona una sucursal.");
-    branch?.focus();
-    return false;
-  }
-
-  if (!getBranchKey()) {
+  if (!branch?.value || !getBranchKey()) {
     alert("Selecciona una sucursal disponible.");
     branch?.focus();
     return false;
@@ -711,37 +739,70 @@ function validateOrder() {
   return true;
 }
 
-/* =========================================================
-   MENSAJE DE WHATSAPP
-========================================================= */
+/* =========================================
+   REFERENCIA DEL PEDIDO
+========================================= */
 
+function generateOrderReference() {
+  const now = new Date();
+
+  const datePart = [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, "0"),
+    String(now.getDate()).padStart(2, "0")
+  ].join("");
+
+  let randomPart;
+
+  if (window.crypto?.getRandomValues) {
+    const values = new Uint32Array(1);
+    window.crypto.getRandomValues(values);
+
+    randomPart = values[0]
+      .toString(36)
+      .toUpperCase()
+      .padStart(7, "0")
+      .slice(-7);
+  } else {
+    randomPart = Math.random()
+      .toString(36)
+      .slice(2, 9)
+      .toUpperCase();
+  }
+
+  return `PM-${datePart}-${randomPart}`;
+}
+
+/* =========================================
+   MENSAJE DE WHATSAPP
+========================================= */
 
 function buildWhatsAppMessage(reference) {
   const totals = calculateOrder();
 
-  const productLines = cart
-    .map(item => {
-      const itemTotal = item.price * item.quantity;
+  const productLines = cart.map(item => {
+    const itemTotal = item.price * item.quantity;
 
-      const lines = [
-        `${item.quantity} x ${item.name}`,
-        `Precio: ${formatPrice(itemTotal)}`
-      ];
+    const lines = [
+      `${item.quantity} x ${item.name}`,
+      item.isPromotion
+        ? "PROMOCIÓN - Sin descuento web adicional"
+        : "Producto de la carta",
+      `Precio: ${formatPrice(itemTotal)}`
+    ];
 
-      if (item.notes?.trim()) {
-        lines.push(
-          `Indicaciones: ${item.notes.trim()}`
-        );
-      }
+    if (item.notes?.trim()) {
+      lines.push(
+        `Indicaciones: ${item.notes.trim()}`
+      );
+    }
 
-      return lines.join("\n");
-    })
-    .join("\n\n");
+    return lines.join("\n");
+  }).join("\n\n");
 
-  const addressText =
-    orderType === "Delivery"
-      ? address.value.trim()
-      : "Retiro en local";
+  const addressText = orderType === "Delivery"
+    ? address.value.trim()
+    : "Retiro en local";
 
   const commentsText =
     comments?.value.trim() || "Sin comentarios";
@@ -763,7 +824,7 @@ function buildWhatsAppMessage(reference) {
     "",
     "*RESUMEN DE PAGO*",
     `Subtotal: ${formatPrice(totals.subtotal)}`,
-    `Descuento web (15%): -${formatPrice(totals.discount)}`,
+    `Descuento web (15%, excluye promociones): -${formatPrice(totals.discount)}`,
     `Subtotal con descuento: ${formatPrice(totals.discountedSubtotal)}`,
     `Delivery: ${formatPrice(totals.delivery)}`,
     `*TOTAL: ${formatPrice(totals.total)}*`,
@@ -789,46 +850,74 @@ function buildWhatsAppMessage(reference) {
   ].join("\n");
 }
 
+/* =========================================
+   ENVIAR PEDIDO POR WHATSAPP
+========================================= */
 
-/* =========================================================
-   ENVÍO DEL PEDIDO
-========================================================= */
+async function sendWhatsApp() {
+  if (!validateOrder()) return;
 
-function sendWhatsApp() {
-  if (!validateOrder()) {
-    return;
-  }
-
-  const reference = generateOrderReference();
-
-  const message = buildWhatsAppMessage(reference);
-
-  const whatsappUrl =
-    `https://wa.me/${whatsappNumber}` +
-    `?text=${encodeURIComponent(message)}`;
-
-  const newWindow = window.open(
-    whatsappUrl,
+  const whatsappWindow = window.open(
+    "about:blank",
     "_blank"
   );
 
-  if (newWindow) {
-    newWindow.opener = null;
-  } else {
+  if (whatsappWindow) {
+    whatsappWindow.opener = null;
+  }
+
+  if (sendOrderButton) {
+    sendOrderButton.disabled = true;
+  }
+
+  try {
+    // Comprobar productos y promociones vigentes.
+    await sincronizarProductos();
+
+    if (!validateOrder()) {
+      whatsappWindow?.close();
+      return;
+    }
+
+    const reference = generateOrderReference();
+    const message = buildWhatsAppMessage(reference);
+
+    const whatsappUrl =
+      `https://wa.me/${whatsappNumber}` +
+      `?text=${encodeURIComponent(message)}`;
+
+    if (whatsappWindow && !whatsappWindow.closed) {
+      whatsappWindow.location.replace(whatsappUrl);
+    } else {
+      alert(
+        "El navegador bloqueó WhatsApp. Permite las ventanas emergentes e inténtalo nuevamente."
+      );
+    }
+
+  } catch (error) {
+    whatsappWindow?.close();
+    console.error("Error al verificar el pedido:", error);
+
     alert(
-      "Tu navegador bloqueó la apertura de WhatsApp. Permite las ventanas emergentes e inténtalo nuevamente."
+      "No pudimos verificar los precios y promociones actuales. " +
+      "Por seguridad, no se enviará el pedido. " +
+      "Actualiza la página e inténtalo nuevamente."
     );
+
+  } finally {
+    if (sendOrderButton) {
+      sendOrderButton.disabled = false;
+    }
   }
 }
 
-/* =========================================================
+/* =========================================
    MENÚ MÓVIL
-========================================================= */
+========================================= */
 
 if (ordersMenuButton && ordersNav) {
   ordersMenuButton.addEventListener("click", () => {
-    const isOpen =
-      ordersNav.classList.toggle("open");
+    const isOpen = ordersNav.classList.toggle("open");
 
     ordersMenuButton.setAttribute(
       "aria-expanded",
@@ -839,160 +928,142 @@ if (ordersMenuButton && ordersNav) {
   ordersNav.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       ordersNav.classList.remove("open");
-
-      ordersMenuButton.setAttribute(
-        "aria-expanded",
-        "false"
-      );
+      ordersMenuButton.setAttribute("aria-expanded", "false");
     });
   });
 }
 
-/* =========================================================
+/* =========================================
    EVENTOS DE CATEGORÍAS
-========================================================= */
+========================================= */
 
-document
-  .querySelectorAll(".category")
-  .forEach(button => {
-    button.addEventListener("click", () => {
-      document
-        .querySelectorAll(".category")
-        .forEach(categoryButton => {
-          categoryButton.classList.remove("active");
-        });
-
-      button.classList.add("active");
-
-      currentCategory =
-        button.dataset.filter || "todos";
-
-      renderProducts();
+document.querySelectorAll(".category").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".category").forEach(item => {
+      item.classList.remove("active");
     });
+
+    button.classList.add("active");
+
+    currentCategory = button.dataset.filter || "todos";
+
+    renderProducts();
   });
-
-/* =========================================================
-   BÚSQUEDA Y ORDENAMIENTO
-========================================================= */
-
-searchInput?.addEventListener(
-  "input",
-  renderProducts
-);
-
-sortSelect?.addEventListener(
-  "change",
-  renderProducts
-);
-
-/* =========================================================
-   AGREGAR PRODUCTOS
-========================================================= */
-
-productsGrid?.addEventListener("click", event => {
-  const addButton =
-    event.target.closest(".add-product");
-
-  if (!addButton) {
-    return;
-  }
-
-  addToCart(addButton.dataset.productId);
 });
 
-/* =========================================================
+/* =========================================
+   BÚSQUEDA Y ORDENAMIENTO
+========================================= */
+
+searchInput?.addEventListener("input", renderProducts);
+
+sortSelect?.addEventListener("change", renderProducts);
+
+/* =========================================
+   AGREGAR PLATOS AL CARRITO
+========================================= */
+
+productsGrid?.addEventListener("click", event => {
+  const button = event.target.closest(".add-product");
+
+  if (!button) return;
+
+  addToCart(button.dataset.productId, false);
+});
+
+/* =========================================
+   AGREGAR PROMOCIONES AL CARRITO
+========================================= */
+
+document.addEventListener("click", event => {
+  const button = event.target.closest(".add-promotion");
+
+  if (!button) return;
+
+  addToCart(button.dataset.promotionId, true);
+});
+
+/* =========================================
    AGREGAR COMBOS
-========================================================= */
+========================================= */
 
-document
-  .querySelectorAll(".combo-add")
-  .forEach(button => {
-    button.addEventListener("click", () => {
-      addToCart(button.dataset.comboId);
-    });
+document.querySelectorAll(".combo-add").forEach(button => {
+  button.addEventListener("click", () => {
+    addToCart(button.dataset.comboId, false);
   });
+});
 
-/* =========================================================
+/* =========================================
    CONTROLES DEL CARRITO
-========================================================= */
+========================================= */
 
 cartItems?.addEventListener("click", event => {
-  const actionButton =
-    event.target.closest("[data-action]");
+  const button = event.target.closest("[data-action]");
 
-  if (!actionButton) {
-    return;
-  }
+  if (!button) return;
 
-  const productId =
-    Number(actionButton.dataset.productId);
-
-  const action =
-    actionButton.dataset.action;
+  const key = button.dataset.cartKey;
+  const action = button.dataset.action;
 
   if (action === "increase") {
-    increaseQuantity(productId);
+    increaseQuantity(key);
   }
 
   if (action === "decrease") {
-    decreaseQuantity(productId);
+    decreaseQuantity(key);
   }
 
   if (action === "remove") {
-    removeFromCart(productId);
+    removeFromCart(key);
   }
 });
 
-/* =========================================================
-   OBSERVACIONES INDIVIDUALES
-========================================================= */
+/* =========================================
+   INDICACIONES DE PRODUCTOS
+========================================= */
 
 cartItems?.addEventListener("input", event => {
-  const notesField =
-    event.target.closest("[data-notes-product-id]");
+  const field = event.target.closest(
+    "[data-notes-cart-key]"
+  );
 
-  if (!notesField) {
-    return;
-  }
+  if (!field) return;
 
   updateItemNotes(
-    notesField.dataset.notesProductId,
-    notesField.value
+    field.dataset.notesCartKey,
+    field.value
   );
 });
 
-/* =========================================================
+/* =========================================
    CAMBIO DE SUCURSAL
-========================================================= */
+========================================= */
 
-branch?.addEventListener("change", () => {
-  renderCart();
-});
+branch?.addEventListener("change", renderCart);
 
-/* =========================================================
+/* =========================================
    CAMBIO DE TIPO DE PEDIDO
-========================================================= */
+========================================= */
 
-document
-  .querySelectorAll(".order-type button")
+document.querySelectorAll(".order-type button")
   .forEach(button => {
     button.addEventListener("click", () => {
       updateOrderType(button);
     });
   });
 
-/* =========================================================
+/* =========================================
    ENVÍO POR WHATSAPP
-========================================================= */
+========================================= */
 
 sendOrderButton?.addEventListener(
   "click",
   sendWhatsApp
 );
 
-/* =========================================================
+/* =========================================
    ACCESO RÁPIDO AL CARRITO
-========================================================= */
+========================================= */
 
 cartJump?.addEventListener("click", () => {
   cartPanel?.scrollIntoView({
@@ -1001,9 +1072,33 @@ cartJump?.addEventListener("click", () => {
   });
 });
 
-/* =========================================================
+/* =========================================
    INICIALIZACIÓN
-========================================================= */
+========================================= */
 
-renderProducts();
+if (productsGrid) {
+  productsGrid.textContent = "Cargando carta...";
+}
+
+if (sendOrderButton) {
+  sendOrderButton.disabled = true;
+}
+
 renderCart();
+
+sincronizarProductos()
+  .catch(error => {
+    catalogoDisponible = false;
+
+    console.error("Error al cargar la carta:", error);
+
+    if (productsGrid) {
+      productsGrid.textContent =
+        "No pudimos cargar la carta. Actualiza la página.";
+    }
+  })
+  .finally(() => {
+    if (sendOrderButton) {
+      sendOrderButton.disabled = !catalogoDisponible;
+    }
+  });

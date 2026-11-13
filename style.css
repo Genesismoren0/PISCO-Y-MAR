@@ -3549,3 +3549,30 @@ body {
     height: 48px !important;
   }
 }
+
+#homePromoBanner[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================
+   PISCO & MAR - FOTOGRAFÍA DEL BANNER
+========================================= */
+
+#homePromoBanner.home-banner-custom-image {
+  background-color: #f7f0e5;
+
+  /* Degradado y fotografía */
+  background-size: 100% 100%, auto 100%;
+
+  /* Fotografía a la derecha */
+  background-position: center, right center;
+
+  background-repeat: no-repeat, no-repeat;
+}
+
+/* Mantener el texto por encima del fondo */
+#homePromoBanner .promo-ceviche-content {
+  position: relative;
+  z-index: 1;
+}

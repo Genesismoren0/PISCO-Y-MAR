@@ -403,22 +403,25 @@
 
       <!-- PROMOCIÓN EXCLUSIVA WEB -->
 
-      <article class="promo-card promo-ceviche">
+      <article
+  class="promo-card promo-ceviche"
+  id="homePromoBanner"
+>
 
         <div class="promo-ceviche-content">
 
-          <p class="promo-label">
-            Promo
-          </p>
+          <p class="promo-label" id="homePromoLabel">
+  Promo
+</p>
 
-          <h2>
-            Pedidos online
-            <span>15% OFF</span>
-          </h2>
+<h2 id="homePromoTitle">
+  Pedidos online
+  <span id="homePromoDiscount">15% OFF</span>
+</h2>
 
-          <p class="promo-description">
-            Obtén un 15% de descuento en tus productos al pedir directamente en nuestra página web.
-          </p>
+<p class="promo-description" id="homePromoDescription">
+  Obtén un 15% de descuento en tus productos al pedir directamente en nuestra página web.
+</p>
 
           <a
             href="pedidos.html"
@@ -693,6 +696,8 @@
     >
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="home-promotions.js"></script>
 
   <script src="script.js"></script>
 

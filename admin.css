@@ -1,0 +1,559 @@
+
+/* =========================================
+   PISCO & MAR - PANEL ADMINISTRADOR
+========================================= */
+
+:root {
+  --primary: #087f83;
+  --primary-dark: #075e62;
+  --background: #f4f7f8;
+  --surface: #ffffff;
+  --text: #20333b;
+  --muted: #73848b;
+  --border: #e1e8ea;
+  --danger: #c0392b;
+  --radius: 16px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, .07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #54b9be;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   INICIO DE SESIÓN
+========================================= */
+
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: linear-gradient(
+    135deg,
+    #e8f5f4,
+    #f8fafb
+  );
+}
+
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 38px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.login-logo {
+  width: 150px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.login-card h1 {
+  font-size: 25px;
+  margin: 0 0 12px;
+}
+
+.login-card > p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+.login-card form,
+#changePasswordForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+}
+
+input:focus {
+  border-color: var(--primary);
+}
+
+.login-card form button,
+#changePasswordForm button,
+#saveProductButton {
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
+.login-card form button:hover,
+#changePasswordForm button:hover,
+#saveProductButton:hover {
+  background: var(--primary-dark);
+}
+
+.text-button {
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.back-link {
+  display: block;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+#loginMessage,
+#passwordMessage,
+#editProductMessage {
+  font-size: 12px;
+  line-height: 1.6;
+  min-height: 18px;
+}
+
+/* =========================================
+   ESTRUCTURA DEL ADMINISTRADOR
+========================================= */
+
+.admin-panel {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #102d36;
+  color: white;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sidebar-brand {
+  text-align: center;
+}
+
+.sidebar-brand img {
+  width: 145px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.sidebar-brand p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #b9d7da;
+  text-transform: uppercase;
+}
+
+.admin-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-navigation button,
+#logoutButton {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  text-align: left;
+  font-size: 13px;
+}
+
+.admin-navigation button:hover,
+.admin-navigation button.active {
+  background: var(--primary);
+}
+
+#logoutButton {
+  margin-top: auto;
+  background: rgba(255, 255, 255, .08);
+}
+
+#logoutButton:hover {
+  background: var(--danger);
+}
+
+/* =========================================
+   CONTENIDO PRINCIPAL
+========================================= */
+
+.admin-content {
+  flex: 1;
+  min-width: 0;
+  padding: 38px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 35px;
+}
+
+.admin-header p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.admin-header h1 {
+  margin: 4px 0;
+  font-size: 30px;
+}
+
+#adminEmail {
+  font-size: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.admin-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.admin-section h2 {
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+
+.admin-section p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* =========================================
+   TARJETAS DE PRODUCTOS
+========================================= */
+
+.admin-products-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(220px, 1fr)
+  );
+  gap: 20px;
+}
+
+.admin-product-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: white;
+}
+
+.admin-product-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-product-info {
+  padding: 16px;
+}
+
+.admin-product-info h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.admin-product-info p {
+  margin: 0 0 12px;
+  color: var(--primary);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.admin-product-info button {
+  width: 100%;
+  padding: 11px;
+  background: #e7f5f4;
+  border: none;
+  border-radius: 9px;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.admin-product-info button:hover {
+  background: #d1ecea;
+}
+
+/* =========================================
+   VENTANA DE EDICIÓN
+========================================= */
+
+.product-dialog {
+  width: min(95%, 460px);
+  max-height: 90vh;
+  overflow-y: auto;
+  border: none;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, .2);
+}
+
+.product-dialog::backdrop {
+  background: rgba(10, 30, 40, .65);
+}
+
+.product-dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-dialog h2 {
+  margin: 0 0 12px;
+}
+
+#editProductPreview {
+  width: 100%;
+  max-height: 210px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f4f7f8;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dialog-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+#cancelEditButton {
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+}
+
+/* =========================================
+   MI CUENTA
+========================================= */
+
+#accountSection {
+  max-width: 650px;
+}
+
+#changePasswordForm {
+  max-width: 420px;
+  margin-top: 25px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 850px) {
+  .admin-panel {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    gap: 15px;
+  }
+
+  .sidebar-brand img {
+    height: 65px;
+  }
+
+  .admin-navigation {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .admin-navigation button {
+    width: auto;
+  }
+
+  #logoutButton {
+    margin-top: 0;
+  }
+
+  .admin-content {
+    padding: 20px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-section {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px 20px;
+  }
+
+  .admin-products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dialog-actions {
+    flex-direction: column;
+  }
+}
+
+
+/* =========================================
+   BANNER DE INICIO - ADMINISTRACIÓN
+========================================= */
+
+.home-banner-admin {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#homeBannerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+#homeBannerForm label {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+#homeBannerForm input[type="text"],
+#homeBannerForm input[type="file"],
+#homeBannerForm textarea,
+#homeBannerForm select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid #dce5e9;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  background: #fff;
+}
+
+#homeBannerForm textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+#homeBannerForm select {
+  max-width: 250px;
+}
+
+#homeBannerForm .dialog-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+
+#saveBannerButton {
+  width: auto;
+  padding: 14px 25px;
+  background: #087f85;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#saveBannerButton:hover {
+  background: #066a70;
+}
+
+#saveBannerButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#bannerMessage {
+  margin-top: 10px;
+  font-size: 14px;
+}

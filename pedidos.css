@@ -4566,3 +4566,13 @@ textarea {
   border-radius: 50% !important;
   transform: scale(2.1) !important;
 }
+
+/* DESCUENTO WEB EN EL RESUMEN DEL PEDIDO */
+.discount-row {
+  color: #07867f;
+}
+
+.discount-row strong {
+  color: #07867f;
+  font-weight: 700;
+}
