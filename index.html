@@ -35,6 +35,26 @@
 
 <body>
 
+
+<!-- PANTALLA DE BIENVENIDA -->
+<div id="pantallaBienvenida" class="pantalla-bienvenida">
+  <div class="bienvenida-contenido">
+
+    <img
+      src="logo-bienvenida.png"
+      alt="Pisco & Mar Restaurante"
+      class="bienvenida-logo"
+    >
+
+    <p class="bienvenida-texto">
+      BIENVENIDOS A PISCO & MAR
+    </p>
+
+    <div class="bienvenida-linea"></div>
+
+  </div>
+</div>
+
   <!-- =====================================================
        ENCABEZADO
   ====================================================== -->
@@ -700,6 +720,25 @@
 <script src="home-promotions.js"></script>
 
   <script src="script.js"></script>
+
+
+<!-- ANIMACIÓN DE BIENVENIDA -->
+<script>
+  (function () {
+    const bienvenida = document.getElementById("pantallaBienvenida");
+
+    if (!bienvenida) return;
+
+    setTimeout(() => {
+      bienvenida.classList.add("ocultar");
+
+      setTimeout(() => {
+        bienvenida.remove();
+      }, 650);
+
+    }, 2000);
+  })();
+</script>
 
 </body>
 </html>

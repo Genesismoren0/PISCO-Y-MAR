@@ -3576,3 +3576,174 @@ body {
   position: relative;
   z-index: 1;
 }
+
+
+/* =========================================
+   PISCO & MAR - PANTALLA DE BIENVENIDA
+========================================= */
+
+.pantalla-bienvenida {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  background: #071f25;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999999;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+.bienvenida-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 25px;
+  animation: entradaLogo 1s ease forwards;
+}
+
+.bienvenida-logo {
+  width: min(75vw, 420px);
+  max-height: 45vh;
+  height: auto;
+  object-fit: contain;
+
+  filter: drop-shadow(0 12px 25px rgba(0,0,0,0.25));
+}
+
+.bienvenida-texto {
+  color: #e6bb60;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-top: 30px;
+}
+
+.bienvenida-linea {
+  width: 70px;
+  height: 2px;
+  margin-top: 18px;
+  background: #e6bb60;
+  border-radius: 10px;
+}
+
+/* Animación de entrada */
+@keyframes entradaLogo {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Desaparece suavemente */
+.pantalla-bienvenida.ocultar {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bienvenida-contenido {
+    animation: none;
+  }
+
+  .pantalla-bienvenida {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .bienvenida-logo {
+    width: 85vw;
+  }
+
+  .bienvenida-texto {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+}
+
+
+/* PANTALLA DE BIENVENIDA PISCO & MAR */
+
+.pantalla-bienvenida {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  background: #031b21;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+
+.bienvenida-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  text-align: center;
+}
+
+.bienvenida-logo {
+  width: min(350px, 80vw);
+  height: auto;
+  object-fit: contain;
+  animation: aparecerLogo 1s ease both;
+}
+
+.bienvenida-texto {
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(12px, 2.5vw, 17px);
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.bienvenida-linea {
+  width: 75px;
+  height: 3px;
+  border-radius: 10px;
+  background: #dda941;
+}
+
+.pantalla-bienvenida.ocultar {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes aparecerLogo {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

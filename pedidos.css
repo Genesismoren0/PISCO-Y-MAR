@@ -4576,3 +4576,24 @@ textarea {
   color: #07867f;
   font-weight: 700;
 }
+
+
+/* ========================================
+   AJUSTES WHATSAPP - PISCO & MAR
+======================================== */
+
+/* Reducir imágenes dentro del botón de pedido */
+button img[src*="whatsapp"],
+a img[src*="whatsapp"] {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* Reducir botón flotante de WhatsApp */
+a[href*="wa.me"] img,
+a[href*="api.whatsapp.com"] img {
+  max-width: 42px;
+  max-height: 42px;
+  object-fit: contain;
+}
